@@ -1,7 +1,29 @@
-.home{
-    block-size: 100%;
+.header{
+    /* block-size: 108px; */
     background: #151515;
+    padding-inline: 40px;
+    padding-block: 24px;
+    display: flex;
 }
-.searchIcon{
-    color: #fff;
+
+.buscador{
+    position: relative;
 }
+.inputSearch{
+    display: flex;
+    background: #202020;
+    border: none;
+    padding-block: .5rem;
+    padding-inline: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    flex: 1;
+    font-family: 'Roboto', sans-serif;
+}
+.iconSearch{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+
+}
+

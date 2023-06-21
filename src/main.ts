@@ -1,5 +1,5 @@
 import './style.css'
-import Router from '../src/router.ts';
+// import Router from '../src/router.ts';
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.ts'
@@ -24,6 +24,6 @@ import Router from '../src/router.ts';
 
 // setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 
-window.addEventListener('DOMContentLoaded', () => {
-  Router.init();
-});
+// window.addEventListener('DOMContentLoaded', () => {
+//   Router.init();
+// });
