@@ -29,7 +29,7 @@ interface Router {
   
       document
         .querySelectorAll('section.page')
-        .forEach((s) => (s.style.display = 'none'));
+        .forEach((s) => (s.style.display = 'block'));
   
       if (route === '/') {
         (document.querySelector('section#home') as HTMLElement).style.display = 'block';

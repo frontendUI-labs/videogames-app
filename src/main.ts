@@ -22,7 +22,7 @@ import Router from '../src/router.ts';
 //   </div>
 // `
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+// setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 
 window.addEventListener('DOMContentLoaded', () => {
   Router.init();
