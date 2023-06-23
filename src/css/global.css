@@ -73,7 +73,10 @@ h6 {
   border-width: 0;
 }
 ul,
-li {
+li,
+a {
   margin: 0;
   padding: 0;
+  list-style: none;
+  color: black;
 }

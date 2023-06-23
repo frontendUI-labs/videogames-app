@@ -1,4 +1,11 @@
 import './style.css'
+import Router from "../src/router";
+import './components/sidebar';
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  Router.init();
+});
 // import Router from '../src/router.ts';
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'
