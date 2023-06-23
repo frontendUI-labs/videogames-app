@@ -29,9 +29,7 @@ const Router: Router = {
 
     document.querySelectorAll("section.page").forEach((s: HTMLElement) => {
       s.style.display = "none";
-    });
-
-    if (route === "/") {
+      if (route === "/") {
       (document.querySelector("section#home") as HTMLElement).style.display =
         "block";
       return;
@@ -42,13 +40,9 @@ const Router: Router = {
         "block";
       return;
     }
+    });
 
-    if (route === "/styleguide") {
-      (
-        document.querySelector("section#styleguide") as HTMLElement
-      ).style.display = "block";
-    }
-
+    
     window.scrollX = 0;
   },
 };
