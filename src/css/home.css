@@ -1,29 +1,258 @@
-.header{
-    /* block-size: 108px; */
-    background: #151515;
-    padding-inline: 40px;
-    padding-block: 24px;
+.home {
+  background: var(--dark-100);
+  padding-inline: 10px;
+  padding-block: 24px;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.homeHeading {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+}
+
+.headingDescription {
+  position: relative;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 1rem;
+}
+.videoGamePicture {
+  width: 383px;
+  height: 216px;
+  object-fit: cover;
+}
+
+.game__image {
+  /* background-image: url("../../imagenes/GTAV.webp"); */
+  width: 383px;
+  /* height: 270px; */
+  background-size: cover;
+  position: relative;
+  height: 216px;
+}
+.transition {
+  transition: 1s;
+}
+.play__background {
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: var(--gris10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  opacity: 1;
+  transition: 1s;
+}
+.play-icon {
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+}
+.game__image:hover {
+  /* background-image: url("../../imagenes/RE4.webp"); */
+  background-position: center;
+  transition: 1s;
+}
+.card__wrapper:hover .play__background {
+  opacity: 0;
+  transition: 1s;
+}
+.content__wrapper {
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  margin-top: 20px;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  /* align-items: center;
+  justify-content: center;
+  margin: auto; */
+}
+
+.button__filter {
+  background: var(--dark-200);
+  border: none;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 14px;
+  align-items: center;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.button__filter:hover {
+  color: var(--grey-100);
+}
+.categories {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.Discover__options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.display__Options {
+  font-family: "Roboto", sans-serif;
+  color: var(--grey-100);
+  font-size: 14px;
+}
+.layout__grid {
+  background: var(--dark-200);
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.discover__layouts {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  display: none;
+}
+.layout__grid:hover {
+  background: var(--grey-100);
+}
+
+/* CARDS */
+.card__content__wrapper {
+  display: grid;
+  margin-top: 20px;
+  gap: 1rem;
+  justify-content: center;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+}
+.card__wrapper {
+  background: var(--dark-200);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 383px;
+  cursor: pointer;
+}
+.card__wrapper:hover {
+  transform: scale(1.02);
+  transition: 0.5s;
+}
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.games_console {
+  display: flex;
+  gap: 0.2rem;
+}
+.game__buy {
+  padding: 2px;
+  border: 2px solid var(--green);
+  border-radius: 0.5rem;
+  color: var(--green);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+}
+.card__title {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+.game__name {
+  font-family: "Roboto", sans-serif;
+  color: var(--white);
+}
+.game__name:hover {
+  color: var(--grey-100);
+}
+.more__options__button {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: flex-start;
+}
+.card__buttons {
+  background: var(--dark-300);
+  border: none;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+  padding-block: 0.3rem;
+  padding-inline: 0.5rem;
+  border-radius: 0.3rem;
+}
+.game_number {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  color: var(--white);
+}
+.show__more__details__card {
+  display: flex;
+  justify-content: center;
+}
+.button__details__card {
+  background: none;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  border: none;
+  text-decoration: underline;
+  text-decoration-color: var(--grey-100);
+}
+@media screen and (min-width: 640px) {
+  body {
+    background: red;
+  }
+  .card__content__wrapper {
+    grid-template-columns: repeat(2, auto);
+  }
+  .card__wrapper {
+    width: 355px;
+  }
+  .discover__layouts {
     display: flex;
+  }
 }
-
-.buscador{
-    position: relative;
+@media screen and (min-width: 1080px) {
+  body {
+    background: orange;
+  }
+  .card__wrapper {
+    width: 385px;
+  }
+  .card__content__wrapper {
+    grid-template-columns: repeat(3, auto);
+  }
 }
-.inputSearch{
-    display: flex;
-    background: #202020;
-    border: none;
-    padding-block: .5rem;
-    padding-inline: 1rem;
-    border-radius: 1rem;
-    width: 100%;
-    flex: 1;
-    font-family: 'Roboto', sans-serif;
+@media screen and (min-width: 1440px) {
+  body {
+    background: purple;
+  }
+  .card__content__wrapper {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto;
+  }
+  .card__wrapper {
+    width: 385px;
+  }
+  .game__image {
+    width: 385px;
+  }
 }
-.iconSearch{
-    position: absolute;
-    z-index: 1;
-    left: 0;
-
-}
-

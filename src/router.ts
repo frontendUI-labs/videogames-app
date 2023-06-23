@@ -29,25 +29,20 @@ const Router: Router = {
 
     document.querySelectorAll("section.page").forEach((s: HTMLElement) => {
       s.style.display = "none";
+      if (route === "/") {
+        (document.querySelector("section#home") as HTMLElement).style.display =
+          "block";
+        return;
+      }
+  
+      if (route.includes("/details")) {
+        (document.querySelector("section#details") as HTMLElement).style.display =
+          "block";
+        return;
+      }
     });
 
-    if (route === "/") {
-      (document.querySelector("section#home") as HTMLElement).style.display =
-        "block";
-      return;
-    }
-
-    if (route.includes("/details")) {
-      (document.querySelector("section#details") as HTMLElement).style.display =
-        "block";
-      return;
-    }
-
-    if (route === "/styleguide") {
-      (
-        document.querySelector("section#styleguide") as HTMLElement
-      ).style.display = "block";
-    }
+    
 
     window.scrollX = 0;
   },

@@ -1,4 +1,11 @@
-import './style.css'
+import "./style.css";
+// import '../src/home.ts'
+import Router from "../src/router";
+
+window.addEventListener("DOMContentLoaded", () => {
+  Router.init();
+});
+
 // import Router from '../src/router.ts';
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'
