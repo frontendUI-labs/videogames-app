@@ -1,25 +1,10 @@
-async function getVideoGames(): Promise<any> {
-  try {
-    const response = await fetch(
-      "https://api.rawg.io/api/games?key=2b650dbbb0f64479b2f2bf63a1d29c13"
-    );
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    console.log("Hubo un error en el fetch");
-  }
-}
+import { createDOM } from "../utilities/stringToDOM";
+import { getVideoGames } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
 
 async function getGames(): Promise<void> {
   const videoGame = await getVideoGames();
   const dataGames = videoGame.results;
   getEachGameDetail(dataGames);
-}
-
-function createDOM(string: string): Node | null {
-  const parser = new DOMParser();
-  const HTML = parser.parseFromString(string, "text/html");
-  return HTML.body.firstChild;
 }
 
 let images: string[] = [];
@@ -72,9 +57,9 @@ async function getEachGameDetail(dataGames: any[]): Promise<void> {
           </div>
         </div>
       </div>`);
-    if (!cardContent) {
-      return;
-    }
+    // if (!cardContent) {
+    //   return;
+    // }
 
     card.append(cardContent);
   });

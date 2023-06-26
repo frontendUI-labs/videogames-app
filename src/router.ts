@@ -34,15 +34,14 @@ const Router: Router = {
           "block";
         return;
       }
-  
+
       if (route.includes("/details")) {
-        (document.querySelector("section#details") as HTMLElement).style.display =
-          "block";
+        (
+          document.querySelector("section#details") as HTMLElement
+        ).style.display = "block";
         return;
       }
     });
-
-    
 
     window.scrollX = 0;
   },

@@ -1,9 +1,11 @@
 .home {
-  background: var(--dark-100);
   padding-inline: 10px;
   padding-block: 24px;
   block-size: 100%;
-  inline-size: 100%;
+  z-index: 99;
+  max-width: 100%;
+  background: var(--black-800);
+  padding-inline: 130px;
 }
 
 .homeHeading {
@@ -43,7 +45,7 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  color: var(--gris10);
+  /* color: var(--gray-100); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +81,7 @@
 }
 
 .button__filter {
-  background: var(--dark-200);
+  background: var(--black-400);
   border: none;
   color: var(--white);
   font-family: "Roboto", sans-serif;
@@ -93,7 +95,7 @@
   cursor: pointer;
 }
 .button__filter:hover {
-  color: var(--grey-100);
+  color: var(--gray-400);
 }
 .categories {
   font-family: "Roboto", sans-serif;
@@ -107,24 +109,25 @@
 }
 .display__Options {
   font-family: "Roboto", sans-serif;
-  color: var(--grey-100);
+  color: var(--gray-400);
   font-size: 14px;
+  font-weight: bold;
 }
 .layout__grid {
-  background: var(--dark-200);
+  background: var(--gray-800);
   border: none;
   padding: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+.layout__grid:hover {
+  background: var(--gray-500);
 }
 .discover__layouts {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   display: none;
-}
-.layout__grid:hover {
-  background: var(--grey-100);
 }
 
 /* CARDS */
@@ -133,10 +136,11 @@
   margin-top: 20px;
   gap: 1rem;
   justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
 }
 .card__wrapper {
-  background: var(--dark-200);
+  background: var(--black-500);
   border-radius: 12px;
   overflow: hidden;
   width: 383px;
@@ -163,9 +167,9 @@
 }
 .game__buy {
   padding: 2px;
-  border: 2px solid var(--green);
+  border: 2px solid var(--green-300);
   border-radius: 0.5rem;
-  color: var(--green);
+  color: var(--green-300);
   width: 32px;
   height: 32px;
   display: flex;
@@ -181,7 +185,7 @@
   color: var(--white);
 }
 .game__name:hover {
-  color: var(--grey-100);
+  color: var(--gray-300);
 }
 .more__options__button {
   display: flex;
@@ -189,7 +193,7 @@
   justify-content: flex-start;
 }
 .card__buttons {
-  background: var(--dark-300);
+  background: var(--black-300);
   border: none;
   display: flex;
   gap: 0.2rem;
@@ -214,9 +218,9 @@
   font-size: 12px;
   border: none;
   text-decoration: underline;
-  text-decoration-color: var(--grey-100);
+  text-decoration-color: var(--gray-300);
 }
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 1140px) {
   body {
     background: red;
   }
@@ -230,7 +234,8 @@
     display: flex;
   }
 }
-@media screen and (min-width: 1080px) {
+
+@media screen and (min-width: 1600px) {
   body {
     background: orange;
   }
@@ -241,7 +246,7 @@
     grid-template-columns: repeat(3, auto);
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1920px) {
   body {
     background: purple;
   }

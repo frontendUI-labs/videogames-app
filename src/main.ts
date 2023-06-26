@@ -1,5 +1,6 @@
 import "./style.css";
-// import '../src/home.ts'
+import "../src/home.ts";
+import "../src/components/sidebar.ts";
 import Router from "../src/router";
 
 window.addEventListener("DOMContentLoaded", () => {
