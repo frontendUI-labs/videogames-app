@@ -12,7 +12,8 @@ const sidebarButtonEls = document.querySelectorAll<HTMLElement>(
 // );
 sidebarButtonEls.forEach((button) => {
   const firstElementChild = button.firstElementChild as HTMLElement;
-  const secondElementChild = firstElementChild.nextElementSibling as HTMLElement;
+  const secondElementChild =
+    firstElementChild.nextElementSibling as HTMLElement;
   button.addEventListener("click", () => {
     button.previousElementSibling!.classList.toggle("block");
     firstElementChild.classList.toggle("rotate");
@@ -20,7 +21,3 @@ sidebarButtonEls.forEach((button) => {
     secondElementChild.classList.toggle("none");
   });
 });
-
-
-
-

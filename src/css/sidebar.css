@@ -1,17 +1,15 @@
 .sidebar {
   block-size: 100%;
-  overflow: auto;
   font-family: "Roboto", san-serif;
   color: white;
-  background: black;
+  background: var(--black-800);
   font-size: 24px;
   font-weight: 700;
   padding-block: 40px;
+  inline-size: 260px;
 }
 .sidebar__container {
-  inline-size: 200px;
-  margin-inline-start: 40px;
-  background: black;
+  padding-inline-start: 40px;
 }
 .sidebar a {
   text-decoration: none;
