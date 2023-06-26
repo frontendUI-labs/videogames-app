@@ -9,6 +9,7 @@ const Router: Router = {
       a.addEventListener("click", (event) => {
         event.preventDefault();
         const href = (event.target as HTMLElement).getAttribute("href");
+        // @ts-ignore
         Router.go(href);
       });
     });
@@ -26,6 +27,7 @@ const Router: Router = {
     if (addToHistory) {
       history.pushState({ route }, "", route);
     }
+    // @ts-ignore
 
     document.querySelectorAll("section.page").forEach((s: HTMLElement) => {
       s.style.display = "none";
@@ -46,6 +48,7 @@ const Router: Router = {
     window.scrollX = 0;
   },
 };
+// @ts-ignore
 
 window.Router = Router; // make it "public"
 
