@@ -1,0 +1,249 @@
+.actionGenre {
+  padding-inline: 10px;
+  padding-block: 24px;
+  block-size: 100%;
+  z-index: 1;
+  width: 100%;
+  background: var(--black-800);
+  margin: auto;
+}
+.acttion__head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: auto;
+  padding-inline: 1rem;
+}
+.main__header__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.action__head__wrapp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.acttion__title {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+}
+.interaction__butons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.button__follow {
+  background: var(--gray-800);
+  border: none;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  padding-block: 10px;
+  border-radius: 0.2rem;
+  padding-inline: 35px;
+}
+.genred__description {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 22px;
+  display: inline;
+  text-align: justify;
+}
+.genred__description__end {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 22px;
+  display: inline;
+  display: none;
+  text-align: justify;
+}
+.read__more__buton {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  border: none;
+  background: var(--gray-800);
+  border-radius: 0.2rem;
+
+  cursor: pointer;
+}
+.button__follow.icon {
+  padding: 10px;
+}
+
+.relate__tag {
+  background: var(--gray-800);
+  border: none;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  color: var(--gray-400);
+  font-size: 14px;
+  font-weight: bold;
+}
+.related__tags__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.related__tags {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.related__tags__title {
+  font-family: "Roboto", sans-serif;
+  color: var(--gray-400);
+  font-size: 14px;
+  font-weight: bold;
+}
+.categories {
+  .categories {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+.button__action__filter {
+  min-width: 200px;
+  background: var(--black-400);
+  border: none;
+  font-weight: 400;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  align-items: center;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.button__action__filter:hover {
+  color: var(--gray-400);
+}
+
+.categories__games {
+  display: flex;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  gap: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  margin-block: 0.5rem;
+}
+.categories__games:hover {
+  background-color: #e5e5e5;
+  border-radius: 0.2rem;
+}
+
+.display__action__order {
+  width: 200px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 20px;
+  border-radius: 0.5rem;
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+.categories__action__games {
+  display: flex;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  gap: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  margin-block: 0.5rem;
+}
+.categories__action__games:hover {
+  background-color: #e5e5e5;
+  border-radius: 0.2rem;
+}
+
+.order__games {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order__games__buttons {
+  display: flex;
+  gap: 1rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Card Games */
+
+.gamesfilter {
+  display: grid;
+  margin-top: 20px;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.gamefilterCards {
+  display: grid;
+  margin-top: 20px;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  grid-template-columns: auto;
+}
+
+@media screen and (min-width: 1140px) {
+  .gamefilterCards {
+    grid-template-columns: repeat(2, auto);
+  }
+  .card__wrapper {
+    width: 383px;
+  }
+  .discover__layouts {
+    display: flex;
+  }
+  .show__more__details__card {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .card__wrapper {
+    width: 383px;
+  }
+  .gamefilterCards {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .gamefilterCards {
+    grid-template-columns: repeat(4, auto);
+  }
+  .card__wrapper {
+    width: 383px;
+  }
+  .game__image {
+    width: 383px;
+  }
+}

@@ -43,6 +43,18 @@ const Router: Router = {
         ).style.display = "block";
         return;
       }
+      if (route.includes("/games/")) {
+        (
+          document.querySelector("section#genres") as HTMLElement
+        ).style.display = "block";
+        return;
+      }
+      if (route.includes("/?search")) {
+        (
+          document.querySelector("section#search") as HTMLElement
+        ).style.display = "block";
+        return;
+      }
     });
 
     window.scrollX = 0;

@@ -1,0 +1,219 @@
+import { createDOM } from "../utilities/stringToDOM";
+import { format } from "date-fns";
+import {
+  getGamesDataBySearch,
+  Game,
+  ParentPlatforms,
+} from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+import Router from "../src/router";
+
+const platformSlugIconMap: { [key: string]: string } = {
+  linux: "../icon/linux.svg",
+  pc: "../icon/windows.svg",
+  ios: "../icon/ios-icon.svg",
+  mac: "../icon/apple.svg",
+  android: "../icon/android-icon.svg",
+  xbox: "../icon/xbox-icon.svg",
+  playstation: "../icon/pplaystation-icon.svg",
+  nintendo: "../icon/nintendo-icon.svg",
+};
+
+export function renderParentPlaforms(parentPlaforms: ParentPlatforms) {
+  return parentPlaforms
+    .map((platforms) => {
+      const platformSlug = platforms.platform.slug;
+      return `<img id="ps4-icon" src="${
+        platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
+      }" alt="" />`;
+    })
+    .join("");
+}
+
+export function renderGenres(genres: Game["genres"]) {
+  return genres.map((genre) => {
+    return ` <a class="links" href="/games/${genre.slug}">${genre.name} </a>`;
+  });
+}
+
+export function renderGameCardEl(game) {
+  const releaseDate = format(new Date(game.released), "d MMM yyyy");
+  const genresTemplate = renderGenres(game.genres);
+  const platformsTemplate = renderParentPlaforms(game.parent_platforms);
+
+  return createDOM(`<div class="card__wrapper"  id="gameCard">
+      <div class="game__image">
+        <img class="videoGamePicture" id="videoGamePicture" src="${
+          game.background_image ?? "../images/justInCasejpg.jpg"
+        }" alt="">
+        <video class="video" height="216" loop autoplay muted src="https://media.rawg.io/media/stories-640/6e7/6e7d3b3665e1a4321fdbbcf561dcbb0e.mp4"></video>
+
+        <button class="play__background" id="iconPlay">
+          <img class="play-icon" src="../icon/play-icon.svg" alt="" />
+        </button>
+      </div>
+      <div class="main__card__content">
+      <div class="card__content">
+        <div class="card__header">
+          <div class="games_console">
+            ${platformsTemplate}
+          </div>
+          <span class="game__buy">${parseInt(
+            game.score ?? game.metacritic
+          )}</span>
+        </div>
+        <div class="card__title">
+        <a href="/games/${game.slug}">
+          <h2 class="game__name">
+            ${game.name}
+          </h2>
+          </a>
+          <img src="../icon/plus-icon.svg" alt="">
+        </div>
+        <div class="more__options__button">
+          <button class="card__buttons">
+          <img class=""plus src="../icon/plus-icon.svg" alt="">
+            <span class="game_number">${game.added}</span>
+          </button>
+          <button class="card__buttons" id="gift">
+            <img src="../icon/windows.svg" alt="" />
+          </button>
+          <button class="card__buttons" id="moreOptions">
+            <img src="../icon/windows.svg" alt="" />
+          </button>
+        </div>
+        <div class="show__more__details__card">
+          <button class="button__details__card">View More</button>
+        </div>
+        </div>
+        <div class="extra__information__content" id="extraInformation">
+          <div class="information__content">
+            <div class="information__release">
+                    <h4 class="title game__release">Release Date</h4>
+                    <p class="game__release__date">${releaseDate}</p>
+                  </div>
+                  <hr class="hr__separation" />
+                  <div class="information__release">
+                    <h4 class="title game__genres">Genres</h4>
+                    <div class="game__genres__links">
+                    ${genresTemplate}
+                    </div>
+                  </div>
+                  <hr class="hr__separation" />
+                  <div class="information__release">
+                    <h4 class="title game__chart">Chart</h4>
+                    <a class="links" href="">#1 top 2023</a>
+                  </div>
+                </div>
+                <button class="games__related">
+                  Show more like this
+                  <img src="../icon/icon-arrowRight.svg" alt="" />
+                </button>
+                <button class="games__related" id="hideGame">Hide this game</button>
+              </div>
+    </div>
+    </div>
+    `);
+}
+
+async function getDataFromSearch(searchValue: string) {
+  const allGamesSearched = await getGamesDataBySearch(searchValue);
+  if (!allGamesSearched) return;
+  const games = allGamesSearched.results;
+  const cardsEl = document.querySelector(".cards") as HTMLElement;
+
+  const numberOfGames = document.querySelector(
+    ".games__founded"
+  ) as HTMLElement;
+  numberOfGames.textContent = games ? `${games.length} juegos` : "...";
+  renderGames(games, cardsEl);
+}
+
+export function renderGames(games: Game[], containerEl: HTMLElement) {
+  containerEl.innerHTML = "";
+
+  games.forEach((game) => {
+    const gameCardEl = renderGameCardEl(game);
+    generateVideoHover(gameCardEl);
+    containerEl.append(gameCardEl);
+  });
+}
+
+function generateVideoHover(gameCardEl: HTMLElement) {
+  const img = gameCardEl.querySelector(".videoGamePicture") as HTMLMediaElement;
+  const video = gameCardEl.querySelector(".video") as HTMLMediaElement;
+  const extrainfo = gameCardEl.querySelector(
+    ".extra__information__content"
+  ) as HTMLElement;
+  const gift = gameCardEl.querySelector("#gift") as HTMLElement;
+  const showOptions = gameCardEl.querySelector("#moreOptions") as HTMLElement;
+
+  const deleteGame = gameCardEl.querySelector("#hideGame") as HTMLElement;
+  deleteGame.addEventListener("click", () => {
+    gameCardEl.remove();
+  });
+
+  gameCardEl.addEventListener("mouseover", () => {
+    img.style.opacity = "0";
+    video.style.opacity = "1";
+    video.currentTime = 0;
+    extrainfo.style.display = "flex";
+    gift.style.display = "flex";
+    showOptions.style.display = "flex";
+  });
+  gameCardEl.addEventListener("mouseout", () => {
+    img.style.opacity = "1";
+    video.style.opacity = "0";
+    extrainfo.style.display = "none";
+    gift.style.display = "none";
+    showOptions.style.display = "none";
+  });
+}
+
+let timeout: any;
+const inputElement = document.querySelector(".input__search") as HTMLElement;
+inputElement.addEventListener("input", handleInput);
+function handleInput(event: any) {
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    const searchValue = event?.target?.value ?? "";
+    const params = new URLSearchParams(window.location.search);
+    params.set("search", searchValue);
+    Router.go(searchValue !== "" ? `/?${params}` : "/");
+    if (searchValue === "") return;
+    getDataFromSearch(searchValue);
+  }, 500);
+}
+
+const myLibrary = document.querySelector("#libraryHeader") as HTMLElement;
+const libraryContainer = document.querySelector(
+  "#list__wrapper"
+) as HTMLElement;
+
+myLibrary?.addEventListener("mouseover", () => {
+  libraryContainer.style.display = "flex";
+});
+libraryContainer?.addEventListener("mouseleave", () => {
+  libraryContainer.style.display = "none";
+});
+
+const addIcon = document.querySelector(".add__icon") as HTMLElement;
+const addIconWrapper = document.querySelector(
+  ".features__options"
+) as HTMLElement;
+addIcon?.addEventListener("mouseover", () => {
+  addIconWrapper.style.display = "flex";
+});
+addIconWrapper?.addEventListener("mouseleave", () => {
+  addIconWrapper.style.display = "none";
+});
+
+const dotsOptions = document.querySelector(".dost__icon") as HTMLElement;
+const dostOptionsContainer = document.querySelector(
+  ".final__setting"
+) as HTMLElement;
+dotsOptions?.addEventListener("mouseover", () => {
+  dostOptionsContainer.style.display = "flex";
+});
+dostOptionsContainer?.addEventListener("mouseleave", () => {
+  dostOptionsContainer.style.display = "none";
+});

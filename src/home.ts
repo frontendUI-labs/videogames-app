@@ -1,68 +1,57 @@
-import { createDOM } from "../utilities/stringToDOM";
-import { getVideoGames } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+import { getAllGames } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+import { renderGenres, renderGameCardEl, renderGames } from "./header";
 
 async function getGames(): Promise<void> {
-  const videoGame = await getVideoGames();
-  const dataGames = videoGame.results;
+  const allGamesResponse = await getAllGames();
+  if (!allGamesResponse) return;
+  const dataGames = allGamesResponse.results;
   getEachGameDetail(dataGames);
 }
 
-let images: string[] = [];
-
-async function getEachGameDetail(dataGames: any[]): Promise<void> {
-  dataGames.forEach((game) => {
-    const card = document.querySelector(
-      "#card__content__wrapper"
-    ) as HTMLElement;
-
-    images.unshift(game.background_image);
-
-    const cardContent = createDOM(`<div class="card__wrapper"  id="gameCard">
-        <div class="game__image">
-          <img class="videoGamePicture" id="videoGamePicture" src="${images[0]}" alt="">
-         
-          <button class="play__background" id="iconPlay">
-            <img class="play-icon" src="./icon/play-icon.svg" alt="" />
-          </button>
-        </div>
-        <div class="card__content">
-          <div class="card__header">
-            <div class="games_console">
-              <img src="./icon/windows.svg" alt="" />
-              <img src="./icon/windows.svg" alt="" />
-              <img src="./icon/windows.svg" alt="" />
-            </div>
-            <span class="game__buy">${game.metacritic}</span>
-          </div>
-          <div class="card__title">
-            <h2 class="game__name">
-              ${game.name}
-            </h2>
-            <img src="./icon/windows.svg" alt="" />
-          </div>
-          <div class="more__options__button">
-            <button class="card__buttons">
-              <img src="./icon/windows.svg" alt="" />
-              <span class="game_number">${game.ratings_count}</span>
-            </button>
-            <button class="card__buttons">
-              <img src="./icon/windows.svg" alt="" />
-            </button>
-            <button class="card__buttons">
-              <img src="./icon/windows.svg" alt="" />
-            </button>
-          </div>
-          <div class="show__more__details__card">
-            <button class="button__details__card">View More</button>
-          </div>
-        </div>
-      </div>`);
-    // if (!cardContent) {
-    //   return;
-    // }
-
-    card.append(cardContent);
+async function getEachGameDetail(dataGames) {
+  const card = document.querySelector("#card__content__wrapper") as HTMLElement;
+  dataGames.forEach((game: any) => {
+    const gameCardEl = renderGameCardEl(game);
+    card.append(gameCardEl);
+    renderGenres(game.genres);
+    renderGames(dataGames, card);
   });
 }
 
+const button = document.querySelector("#button__filter") as HTMLElement;
+const content = document.querySelector("#display__order") as HTMLElement;
+const listOfCategories = document.querySelectorAll(
+  ".categories__games"
+) as NodeListOf<HTMLElement>;
+const categorySelected = document.querySelector("#categories") as HTMLElement;
+button.addEventListener("click", openCategories);
+function openCategories() {
+  if (!content.classList.contains("is-open")) {
+    content.classList.add("is-open");
+    content.style.display = "flex";
+  } else {
+    content.classList.remove("is-open");
+    content.style.display = "none";
+  }
+}
+
+const check1 = document.querySelector(".check-icon");
+check1?.classList.add("show");
+let opcionSeleccionada: HTMLElement | null = null;
+listOfCategories.forEach((category: HTMLElement) => {
+  category.addEventListener("click", selectCategory);
+  function selectCategory(event: Event) {
+    check1?.classList.remove("show");
+    const optionChoosen = event.target?.firstElementChild as HTMLElement;
+    if (opcionSeleccionada !== null) {
+      opcionSeleccionada.classList.remove("show");
+    }
+    opcionSeleccionada = optionChoosen;
+    opcionSeleccionada.classList.add("show");
+
+    categorySelected.textContent = category.textContent;
+    content.classList.remove("is-open");
+    content.style.display = "none";
+  }
+});
 getGames();
