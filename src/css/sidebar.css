@@ -1,7 +1,7 @@
 .sidebar {
   block-size: 100%;
   font-family: "Roboto", san-serif;
-  color: white;
+  color: var(--white);
   background: var(--black-800);
   font-size: 24px;
   font-weight: 700;
@@ -14,7 +14,7 @@
 .sidebar a {
   text-decoration: none;
   background-image: none;
-  color: white;
+  color: var(--white);
 }
 .sidebar__title,
 .sidebar__title__disabled {
@@ -55,19 +55,19 @@
   border-radius: 6px;
   inline-size: 32px;
   block-size: 32px;
-  background: #2d2d2d;
-  fill: white;
+  background: var(--black-100);
+  fill: var(--white);
 }
 .sidebar__icon__button {
-  background: #2d2d2d;
+  background: var(--black-100);
   padding: 6px;
   border-radius: 6px;
-  fill: #727272;
+  fill: var(--gray-200);
 }
 .sidebar__button__hide {
   cursor: pointer;
   background-color: transparent;
-  color: #727272;
+  color: var(--gray-200);
   padding: 0;
   border: none;
 }
@@ -77,15 +77,15 @@
   border-radius: 6px;
 }
 .sidebar__title:hover {
-  color: hsla(0, 0%, 100%, 0.4);
+  color: var(--gray-900);
 }
 .sidebar__link:hover > .sidebar__icon {
-  background-color: white;
-  fill: black;
+  background-color: var(--white);
+  fill: var(--black);
 }
 .sidebar__button__hide:hover > .sidebar__icon__button {
-  background-color: #737373;
-  fill: #151515;
+  background-color: var(--gray-200);
+  fill: var(--black-800);
 }
 .rotate {
   transform: rotate(180deg);

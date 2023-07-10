@@ -37,7 +37,7 @@ const Router: Router = {
         return;
       }
 
-      if (route.includes("/details")) {
+      if (route.includes("/games/")) {
         (
           document.querySelector("section#details") as HTMLElement
         ).style.display = "block";
