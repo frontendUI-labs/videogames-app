@@ -23,6 +23,7 @@ async function getDetails(): Promise<void> {
   getEachGameDetail(
     detailGames,
     imagesGames,
+    // @ts-ignore
     creatorsGames,
     achievementsGames,
     postGames
