@@ -177,12 +177,6 @@ export async function getDetailsbyGameSlug(): Promise<GameDetails | undefined> {
     console.log("Hubo un error en el fetch");
   }
 }
-
-type PositionOfEachCreator = {
-  id: number;
-  name: string;
-  slug: string;
-};
 export type DetailsOfCreators = {
   count: number;
   results: {
