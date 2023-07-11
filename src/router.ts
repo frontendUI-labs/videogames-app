@@ -8,8 +8,7 @@ const Router: Router = {
     document.querySelectorAll("a.navlink").forEach((a) => {
       a.addEventListener("click", (event) => {
         event.preventDefault();
-        const href = (event.target as HTMLElement).getAttribute("href");
-        // @ts-ignore
+        const href: any = (event.target as HTMLElement).getAttribute("href");
         Router.go(href);
       });
     });
@@ -64,6 +63,6 @@ const Router: Router = {
 };
 // @ts-ignore
 
-window.Router = Router; // make it "public"
+window.router = Router; // make it "public"
 
 export default Router;

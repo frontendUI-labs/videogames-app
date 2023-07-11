@@ -1,7 +1,4 @@
-import {
-  Game,
-  getAllGames,
-} from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+import { Game, getAllGames } from "./utilities/fetchGetGames";
 import { renderGenres, renderGameCardEl, renderGames } from "./header";
 
 async function getGames(): Promise<void> {

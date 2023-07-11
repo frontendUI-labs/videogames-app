@@ -4,7 +4,7 @@ import {
   getGamesDataBySearch,
   Game,
   ParentPlatforms,
-} from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+} from "./utilities/fetchGetGames";
 import Router from "../src/router";
 
 const platformSlugIconMap: { [key: string]: string } = {
