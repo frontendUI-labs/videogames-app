@@ -1,4 +1,4 @@
-import { createDOM } from "../utilities/stringToDOM";
+import { createDOM } from "./utilities/stringToDOM";
 import { format } from "date-fns";
 import {
   getGamesDataBySearch,

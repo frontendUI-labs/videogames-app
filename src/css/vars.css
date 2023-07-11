@@ -14,6 +14,7 @@
   --gray-600: #7b7b7b; /*borders*/
   --gray-700: #444444; /*background*/
   --gray-800: #3b3b3b; /*background search*/
+  --gray-900: hsla(0, 0%, 100%, 0.4);
 
   /*gray*/
   --black: #000000;
@@ -38,6 +39,6 @@
 
   /*blue*/
   --blue-100: #3c7193;
-  --blue-100: #33a4ec;
-  --blue-100: #1877f2;
+  --blue-200: #33a4ec;
+  --blue-300: #1877f2;
 }

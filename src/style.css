@@ -4,12 +4,15 @@
 @import url(./css/sidebar.css);
 @import url(./css/filterGames.css);
 @import url(./css/header.css);
+@import url(./css/descriptionGame.css);
 
 body {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  grid-template-areas: "header header" "sidebar home";
-  block-size: 100vh;
+  font-family: "Roboto", san-serif;
+  background: var(--black-800);
+}
+.sidebar,
+header {
+  display: none;
 }
 .sidebar {
   grid-area: sidebar;
@@ -19,4 +22,19 @@ header {
 }
 .home {
   grid-area: home;
+}
+.flex {
+  display: flex;
+}
+@media screen and (min-width: 1280px) {
+  body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-areas: "header header" "sidebar home";
+    block-size: 100vh;
+  }
+  .sidebar,
+  header {
+    display: grid;
+  }
 }
