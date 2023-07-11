@@ -36,20 +36,18 @@ const Router: Router = {
           "block";
         return;
       }
-
-      if (route.includes("/games/")) {
+      if (route.includes(`/games/`)) {
         (
           document.querySelector("section#details") as HTMLElement
         ).style.display = "block";
         return;
       }
-
-      // if (route.includes("/games/")) {
-      //   (
-      //     document.querySelector("section#genres") as HTMLElement
-      //   ).style.display = "block";
-      //   return;
-      // }
+      if (route.includes("/gnres")) {
+        (
+          document.querySelector("section#genres") as HTMLElement
+        ).style.display = "block";
+        return;
+      }
       if (route.includes("/?search")) {
         (
           document.querySelector("section#search") as HTMLElement
