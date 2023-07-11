@@ -1,43 +1,49 @@
+import format from "date-fns/format";
 import { createDOM } from "../utilities/stringToDOM";
 import {
-  AchievementsOfGames,
-  DetailsOfCreators,
   GameDetails,
-  getDetailsbyGameSlug,
+  DetailsOfCreators,
+  AchievementsOfGames,
   PostOfGames,
+  imgOfEachGame,
 } from "../api/games";
-import { imagesAllGames } from "../api/games";
-import { getDetailsCreatorsbyGameSlug } from "../api/games";
-import { getFirstAchievementsOfGames } from "../api/games";
-import { getFirstPostOfGames } from "../api/games";
-
-import format from "date-fns/format";
+import {
+  getDetailsbyGameSlug,
+  getDetailsCreatorsbyGameSlug,
+  getFirstAchievementsOfGames,
+  getFirstPostOfGames,
+  imagesAllGames,
+} from "../api/games";
 
 async function getDetails(): Promise<void> {
   const detailGames = await getDetailsbyGameSlug();
-  const imagesGames = await imagesAllGames();
   const creatorsGames = await getDetailsCreatorsbyGameSlug();
   const achievementsGames = await getFirstAchievementsOfGames();
   const postGames = await getFirstPostOfGames();
-  if (!detailGames) return;
+  const imagesGames = await imagesAllGames();
+  if (
+    !detailGames ||
+    !creatorsGames ||
+    !achievementsGames ||
+    !postGames ||
+    !imagesGames
+  )
+    return;
   getEachGameDetail(
     detailGames,
-    imagesGames,
-    // @ts-ignore
     creatorsGames,
     achievementsGames,
-    postGames
+    postGames,
+    imagesGames
   );
 }
 
-// }
-
 async function getEachGameDetail(
   detailGames: GameDetails,
-  imagesGames: any,
   creatorsGames: DetailsOfCreators,
   achievementsGames: AchievementsOfGames,
-  postGames: PostOfGames
+  postGames: PostOfGames,
+  imagesGames: imgOfEachGame
 ): Promise<void> {
   let platformSlugIconMap: { [key: string]: string } = {
     linux: "../icon/linux.svg",
@@ -160,8 +166,6 @@ async function getEachGameDetail(
             const description = result.description;
             const image = result.image;
             const percent = result.percent;
-            // const [name, description, image, percent] =
-            //   getFirstAchievementsOfGamesMap[id];
             return `<div class="achievements__cards">
           <img
             class="achievements__cards__imgs"
@@ -183,7 +187,6 @@ async function getEachGameDetail(
   const getPostOfEachGame = postGames.results
     .slice(0, 6)
     .map((result) => {
-      // const id = result.id;
       const image = result.image;
       const name = result.name;
       const created = format(new Date(result.created), "LLL dd, yyyy");
@@ -191,7 +194,7 @@ async function getEachGameDetail(
       return ` <div class="details__posts__cards" role="button">
                 <div class="posts__cards__decription">
                   <p class="posts__cards__title">${name}</p>
-                  <p><span> ${created}</span> • <span>${username}</span></p>
+                  <p class="post__cards__author"><span> ${created}</span> • <span>${username}</span></p>
                 </div>
                 <div class="post__cards__img"><img src="${image}" alt=""></div>
             </div>`;
@@ -501,7 +504,27 @@ async function getEachGameDetail(
             <div class="achievements__container">
               ${getAchievementsOfEachGame}
               <div class="achievements__cards cards_moreAchiev">
-                <div class="achievements__cards_more"><img class="threepoints" src="./icon/points3-icon.svg" alt="" /></div>
+                <div class="achievements__cards_more"><svg
+        class="threepoints"
+                width="20"
+        height="4"
+        viewBox="0 0 20 4"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.3601 4C18.4647 4 19.3601 3.10457 19.3601 2C19.3601 0.89543 18.4647 0 17.3601 0C16.2555 0 15.3601 0.89543 15.3601 2C15.3601 3.10457 16.2555 4 17.3601 4Z"
+          fill="gray"
+        />
+        <path
+          d="M9.67993 4C10.7845 4 11.6799 3.10457 11.6799 2C11.6799 0.89543 10.7845 0 9.67993 0C8.57536 0 7.67993 0.89543 7.67993 2C7.67993 3.10457 8.57536 4 9.67993 4Z"
+          fill="gray"
+        />
+        <path
+          d="M2 4C3.10457 4 4 3.10457 4 2C4 0.89543 3.10457 0 2 0C0.89543 0 0 0.89543 0 2C0 3.10457 0.89543 4 2 4Z"
+          fill="gray"
+        />
+      </svg></div>
                 <div class="achievements__cards__details">
                   <p class="achievements__cards__title">view all achievements</p>
                   <p class="achievements__cards__description">${

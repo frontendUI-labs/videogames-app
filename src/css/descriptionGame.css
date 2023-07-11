@@ -683,9 +683,48 @@
   .store__buttons {
     inline-size: 47%;
   }
-  /* .details__containerTwo {
+  .details__containerTwo {
+    margin-inline: auto;
+    max-width: 960px;
     width: 100%;
-  } */
+    gap: 20px;
+  }
+  .achievements__container,
+  .details__posts__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .achievements__cards,
+  .details__posts__cards {
+    width: 300px;
+  }
+  .posts__cards__title {
+    font-size: 16px;
+  }
+  .post__cards__author {
+    font-size: 12px;
+  }
+  .details__posts__button__more {
+    display: none;
+  }
+  .details__posts__container {
+    position: relative;
+    border-bottom: 2px solid hsla(0, 0%, 100%, 0.1);
+  }
+  .details__posts__container:after {
+    content: "VIEW ALL";
+    background: var(--black-700);
+    font-size: 12px;
+    padding: 0 12px;
+    line-height: normal;
+    font-weight: 400;
+    position: absolute;
+    right: 10%;
+    bottom: -4%;
+    color: var(--white);
+    cursor: pointer;
+  }
 }
 @media screen and (min-width: 1024px) {
   .details__containerOne {

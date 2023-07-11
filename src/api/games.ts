@@ -186,7 +186,6 @@ export type DetailsOfCreators = {
     image: string;
     image_background: string;
     games_count: number;
-    games: {}[];
     positions: {
       id: number;
       name: string;
@@ -194,6 +193,7 @@ export type DetailsOfCreators = {
     }[];
   }[];
 };
+
 export async function getDetailsCreatorsbyGameSlug(): Promise<
   DetailsOfCreators | undefined
 > {
@@ -259,12 +259,19 @@ export async function getFirstPostOfGames(): Promise<PostOfGames | undefined> {
   }
 }
 
-export async function imagesAllGames(): Promise<any> {
+export type imgOfEachGame = {
+  results: {
+    id: number;
+    image: string;
+  }[];
+};
+
+export async function imagesAllGames(): Promise<imgOfEachGame | undefined> {
   try {
     const response = await fetch(
       `https://api.rawg.io/api/games/${gameSlug}/screenshots?key=${API_KEY}`
     );
-    const data = await response.json();
+    const data: imgOfEachGame = await response.json();
     return data;
   } catch (err) {
     console.log("Hubo un error en el fetch");
