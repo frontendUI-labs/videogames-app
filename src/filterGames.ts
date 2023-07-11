@@ -3,8 +3,8 @@ import {
   getAllGamesGenres,
   descriptionGameGenreType,
   getFiltersDescription,
+  ParentPlatforms,
   Game,
-  GenreGameType,
 } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
 import { createDOM } from "../utilities/stringToDOM";
 import { format } from "date-fns";
@@ -188,8 +188,8 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
 }
 
 function getEachGamereder(
-  dataGamesbyGenre: GenreGameType,
-  allfilterDescription: any
+  dataGamesbyGenre: Game[],
+  allfilterDescription: descriptionGameGenreType
 ) {
   const headerWrapperContent = document.querySelector(
     "#actionGenre"
@@ -203,8 +203,10 @@ function getEachGamereder(
   const entireDescription = headerContenterFilter.querySelector(
     "#entireDescription"
   ) as HTMLElement;
-  if (entireDescription?.firstElementChild) {
-    entireDescription.firstElementChild.style.display = "inline";
+
+  if (entireDescription.firstElementChild) {
+    const element = entireDescription.firstElementChild as HTMLElement;
+    element.style.display = "inline";
   }
 
   const readMoreButton = headerContenterFilter.querySelector(
@@ -251,18 +253,22 @@ function getEachGamereder(
       category.addEventListener("click", selectCategory);
       function selectCategory(event: Event) {
         Popularitycheck?.classList.remove("show");
+        const target = event.target;
+        if (target instanceof HTMLElement) {
+          const firstChild = target.firstElementChild;
 
-        const optionChoosen = event.target?.firstElementChild as HTMLElement;
-        // opcionSeleccionada = event.target.textContent;
-        if (opcionSeleccionada !== null) {
-          opcionSeleccionada.classList.remove("show");
+          const optionChoosen = firstChild as HTMLElement;
+          // opcionSeleccionada = event.target.textContent;
+          if (opcionSeleccionada !== null) {
+            opcionSeleccionada.classList.remove("show");
+          }
+          opcionSeleccionada = optionChoosen;
+          opcionSeleccionada.classList.add("show");
+
+          actionCategorySelected.textContent = category.textContent;
+          containerActionCategories.classList.remove("is-open");
+          containerActionCategories.style.display = "none";
         }
-        opcionSeleccionada = optionChoosen;
-        opcionSeleccionada.classList.add("show");
-
-        actionCategorySelected.textContent = category.textContent;
-        containerActionCategories.classList.remove("is-open");
-        containerActionCategories.style.display = "none";
       }
     });
   }
@@ -272,9 +278,9 @@ function getEachGamereder(
   let opcionSeleccionada: HTMLElement | null = null;
   getOptionCategories(listOfActionCategories);
 
-  function getPlatforms(game: any) {
+  function getPlatforms(game: ParentPlatforms) {
     return game
-      .map((platforms: any) => {
+      .map((platforms) => {
         const platformSlug = platforms.platform.slug;
         return `<img id="ps4-icon" src="${
           platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
@@ -283,7 +289,7 @@ function getEachGamereder(
       .join("");
   }
 
-  dataGamesbyGenre.forEach((game: any) => {
+  dataGamesbyGenre.forEach((game) => {
     const filterCards = document.querySelector(
       "#gamefilterCards"
     ) as HTMLElement;
@@ -291,12 +297,12 @@ function getEachGamereder(
     const newDate = format(new Date(game.released), "d MMM yyyy");
 
     function renderGenres(genres: genresType) {
-      return genres.map((generos: any) => {
+      return genres.map((generos) => {
         return ` <a class="links" href="">${generos.name} </a>`;
       });
     }
 
-    function createCard(game: any) {
+    function createCard(game: Game) {
       const generosGames = renderGenres(game.genres);
       const getGamesPlatform = getPlatforms(game.parent_platforms);
       return createDOM(`<div class="card__wrapper"  id="gameCard">
@@ -370,8 +376,7 @@ function getEachGamereder(
     `);
     }
 
-    const genderOfEachGamer: Game = game.genres;
-    genderOfEachGamer.map((gender) => {
+    game.genres.map((gender) => {
       const actionGenre = gender.slug;
 
       if (window.location.pathname.includes(`/games/${actionGenre}`)) {

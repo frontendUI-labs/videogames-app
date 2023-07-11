@@ -81,7 +81,7 @@ export type GenreGameType = [
       name: string;
       slug: string;
     }[];
-  }[]
+  }
 ];
 
 export type Game = {
@@ -171,7 +171,7 @@ export type Game = {
     id: number;
     image: string;
   }[];
-}[];
+};
 
 export type GetAllGamesResponse = {
   count: number;
@@ -200,7 +200,9 @@ export async function getAllGames(): Promise<GetAllGamesResponse | undefined> {
   }
 }
 
-export async function getAllGamesGenres(): Promise<GenreGameType | undefined> {
+export async function getAllGamesGenres(): Promise<
+  GetAllGamesResponse | undefined
+> {
   const { pathname } = window.location;
   if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
@@ -211,7 +213,7 @@ export async function getAllGamesGenres(): Promise<GenreGameType | undefined> {
     const response = await fetch(
       `https://api.rawg.io/api/games?key=${API_KEY}&genres=${gameGenre}`
     );
-    const data: GenreGameType = await response.json();
+    const data: GetAllGamesResponse = await response.json();
     return data;
   } catch (err) {
     console.log("Hubo un error en el fetch");

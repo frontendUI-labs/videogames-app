@@ -1,4 +1,7 @@
-import { getAllGames } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+import {
+  Game,
+  getAllGames,
+} from "../utilities/Fetch-Get-videoGames/fetchGetGames";
 import { renderGenres, renderGameCardEl, renderGames } from "./header";
 
 async function getGames(): Promise<void> {
@@ -8,9 +11,9 @@ async function getGames(): Promise<void> {
   getEachGameDetail(dataGames);
 }
 
-async function getEachGameDetail(dataGames) {
+async function getEachGameDetail(dataGames: Game[]) {
   const card = document.querySelector("#card__content__wrapper") as HTMLElement;
-  dataGames.forEach((game: any) => {
+  dataGames.forEach((game: Game) => {
     const gameCardEl = renderGameCardEl(game);
     card.append(gameCardEl);
     renderGenres(game.genres);
@@ -41,17 +44,21 @@ let opcionSeleccionada: HTMLElement | null = null;
 listOfCategories.forEach((category: HTMLElement) => {
   category.addEventListener("click", selectCategory);
   function selectCategory(event: Event) {
+    const target = event.target;
     check1?.classList.remove("show");
-    const optionChoosen = event.target?.firstElementChild as HTMLElement;
-    if (opcionSeleccionada !== null) {
-      opcionSeleccionada.classList.remove("show");
-    }
-    opcionSeleccionada = optionChoosen;
-    opcionSeleccionada.classList.add("show");
+    if (target instanceof HTMLElement) {
+      const firstChild = target.firstElementChild;
+      const optionChoosen = firstChild as HTMLElement;
+      if (opcionSeleccionada !== null) {
+        opcionSeleccionada.classList.remove("show");
+      }
+      opcionSeleccionada = optionChoosen;
+      opcionSeleccionada.classList.add("show");
 
-    categorySelected.textContent = category.textContent;
-    content.classList.remove("is-open");
-    content.style.display = "none";
+      categorySelected.textContent = category.textContent;
+      content.classList.remove("is-open");
+      content.style.display = "none";
+    }
   }
 });
 getGames();

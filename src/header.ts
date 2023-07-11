@@ -35,7 +35,7 @@ export function renderGenres(genres: Game["genres"]) {
   });
 }
 
-export function renderGameCardEl(game) {
+export function renderGameCardEl(game: Game) {
   const releaseDate = format(new Date(game.released), "d MMM yyyy");
   const genresTemplate = renderGenres(game.genres);
   const platformsTemplate = renderParentPlaforms(game.parent_platforms);
@@ -169,13 +169,15 @@ function generateVideoHover(gameCardEl: HTMLElement) {
   });
 }
 
-let timeout: any;
+let timeout: number | undefined;
 const inputElement = document.querySelector(".input__search") as HTMLElement;
 inputElement.addEventListener("input", handleInput);
-function handleInput(event: any) {
+function handleInput(event: Event) {
   clearTimeout(timeout);
   timeout = setTimeout(() => {
-    const searchValue = event?.target?.value ?? "";
+    const target = event.target as HTMLInputElement;
+    const value: string = target.value;
+    const searchValue = value;
     const params = new URLSearchParams(window.location.search);
     params.set("search", searchValue);
     Router.go(searchValue !== "" ? `/?${params}` : "/");
