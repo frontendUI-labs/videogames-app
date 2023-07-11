@@ -6,7 +6,7 @@ import {
   ParentPlatforms,
   Game,
 } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
-import { createDOM } from "../utilities/stringToDOM";
+import { createDOM } from "./utilities/stringToDOM";
 import { format } from "date-fns";
 
 type genresType = {
