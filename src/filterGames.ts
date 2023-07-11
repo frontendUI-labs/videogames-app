@@ -1,4 +1,3 @@
-// import { getGamesGenres } from "../utilities/Fetch-Get-videoGames/fetchGetGames";
 import {
   getAllGamesGenres,
   descriptionGameGenreType,
@@ -16,14 +15,14 @@ type genresType = {
 }[];
 
 let platformSlugIconMap: { [key: string]: string } = {
-  linux: "../icon/linux.svg",
-  pc: "../icon/windows.svg",
-  ios: "../icon/ios-icon.svg",
-  mac: "../icon/apple.svg",
-  android: "../icon/android-icon.svg",
-  xbox: "../icon/xbox-icon.svg",
-  playstation: "../icon/pplaystation-icon.svg",
-  nintendo: "../icon/nintendo-icon.svg",
+  linux: "./public/icon/linux.svg",
+  pc: "./public/icon/windows.svg",
+  ios: "./public/icon/ios-icon.svg",
+  mac: "./public/icon/apple.svg",
+  android: "./public/icon/android-icon.svg",
+  xbox: "./public/icon/xbox-icon.svg",
+  playstation: "./public/icon/pplaystation-icon.svg",
+  nintendo: "./public/icon/nintendo-icon.svg",
 };
 
 async function getGamesData(): Promise<void> {
@@ -47,7 +46,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
       <div class="interaction__butons">
         <button class="button__follow">Follow</button>
         <button class="button__follow icon">
-          <img src="../icon/share-icon.svg" alt="" />
+          <img loading="lazy"  src="./public/icon/share-icon.svg" alt="" />
         </button>
       </div>
     </div>
@@ -87,7 +86,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
             <span class="categories" id="action__categories"
               >Popularity</span
             >
-            <img src="../icon/dropDown-icon.svg" alt="" />
+            <img loading="lazy" src="./public/icon/dropDown-icon.svg" alt="" />
           </button>
           <div
             class="display__action__order"
@@ -99,9 +98,9 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 id="dateAdded"
               >
                 Date added
-                <img
+                <img loading="lazy"
                   class="check-icon"
-                  src="../icon/check-icon.svg"
+                  src="./public/icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -110,9 +109,9 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 id="Name"
               >
                 Name
-                <img
+                <img loading="lazy"
                   class="check-icon"
-                  src="../icon/check-icon.svg"
+                  src="./public/icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -121,9 +120,9 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 id="releaseDate"
               >
                 Release date
-                <img
+                <img loading="lazy"
                   class="check-icon"
-                  src="../icon/check-icon.svg"
+                  src="./public/icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -132,10 +131,10 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 id="Popularity"
               >
                 Popularity
-                <img
+                <img loading="lazy"
                   class="check-icon"
                   id="popularityOption"
-                  src="../icon/check-icon.svg"
+                  src="./public/icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -144,9 +143,9 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 id="averageRating"
               >
                 Average rating
-                <img
+                <img loading="lazy"
                   class="check-icon"
-                  src="../icon/check-icon.svg"
+                  src="./public/icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -155,26 +154,26 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
         </div>
         <button class="button__filter" id="button__filter">
           Release Date
-          <img src="../icon/dropDown-icon.svg" alt="" />
+          <img loading="lazy" src="./public/icon/dropDown-icon.svg" alt="" />
         </button>
         <button class="button__filter" id="button__filter">
           Platforms
-          <img src="../icon/dropDown-icon.svg" alt="" />
+          <img loading="lazy" src="./public/icon/dropDown-icon.svg" alt="" />
         </button>
       </div>
       <div class="discover__layouts">
         <p class="display__Options">Display options:</p>
         <button class="layout__grid" id="layoutGrid">
-          <img
+          <img loading="lazy"
             class="display__icons"
-            src="../icon/grid-icon.svg"
+            src="./public/icon/grid-icon.svg"
             alt=""
           />
         </button>
         <button class="layout__grid" id="layoutGridList">
-          <img
+          <img loading="lazy"
             class="display__icons"
-            src="../icon/list-icon.svg"
+            src="./public/icon/list-icon.svg"
             alt=""
           />
         </button>
@@ -282,8 +281,8 @@ function getEachGamereder(
     return game
       .map((platforms) => {
         const platformSlug = platforms.platform.slug;
-        return `<img id="ps4-icon" src="${
-          platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
+        return `<img loading="lazy" id="ps4-icon" src="${
+          platformSlugIconMap[platformSlug] ?? "./public/icon/plus-icon.svg"
         }" alt="" />`;
       })
       .join("");
@@ -307,11 +306,9 @@ function getEachGamereder(
       const getGamesPlatform = getPlatforms(game.parent_platforms);
       return createDOM(`<div class="card__wrapper"  id="gameCard">
       <div class="game__image">
-        <img class="videoGamePicture" id="videoGamePicture" src="${game.background_image}" alt="">
-        <video class="video" height="216" loop autoplay muted src="https://media.rawg.io/media/stories/4a7/4a78913e6ee817ca1e34c7df8169eca4.mp4"></video>
-
+        <img loading="lazy" class="videoGamePicture" id="videoGamePicture" src="${game.background_image}" alt="">
         <button class="play__background" id="iconPlay">
-          <img class="play-icon" src="../icon/play-icon.svg" alt="" />
+          <img loading="lazy" class="play-icon" src="./public/icon/play-icon.svg" alt="" />
         </button>
       </div>
       <div class="main__card__content">
@@ -328,18 +325,18 @@ function getEachGamereder(
           ${game.name}
         </h2>
         </a>
-          <img src="../icon/plus-icon.svg" alt="">
+          <img loading="lazy" src="./public/icon/plus-icon.svg" alt="">
         </div>
         <div class="more__options__button">
           <button class="card__buttons">
-          <img class=""plus src="../icon/plus-icon.svg" alt="">
+          <img loading="lazy" class=""plus src="./public/icon/plus-icon.svg" alt="">
             <span class="game_number">${game.ratings_count}</span>
           </button>
           <button class="card__buttons" id="gift">
-            <img src="../icon/windows.svg" alt="" />
+            <img loading="lazy" src="./public/icon/windows.svg" alt="" />
           </button>
           <button class="card__buttons" id="moreOptions">
-            <img src="../icon/windows.svg" alt="" />
+            <img loading="lazy" src="./public/icon/windows.svg" alt="" />
           </button>
         </div>
         <div class="show__more__details__card">
@@ -367,7 +364,7 @@ function getEachGamereder(
                 </div>
                 <button class="games__related">
                   Show more like this
-                  <img src="../icon/icon-arrowRight.svg" alt="" />
+                  <img loading="lazy" src="./public/icon/icon-arrowRight.svg" alt="" />
                 </button>
                 <button class="games__related" id="hideGame">Hide this game</button>
               </div>
@@ -386,9 +383,6 @@ function getEachGamereder(
         const img = cardContentFilter.querySelector(
           ".videoGamePicture"
         ) as HTMLElement;
-        const video = cardContentFilter.querySelector(
-          ".video"
-        ) as HTMLMediaElement;
         const extrainfo = cardContentFilter.querySelector(
           ".extra__information__content"
         ) as HTMLElement;
@@ -404,20 +398,29 @@ function getEachGamereder(
           cardContentFilter.remove();
         });
 
+        const videoContainer = cardContentFilter.querySelector(".game__image");
+        const video = document.createElement("video");
+        video.src =
+          "https://media.rawg.io/media/stories-640/6e7/6e7d3b3665e1a4321fdbbcf561dcbb0e.mp4";
+        video.height = 216;
+        video.loop = true;
+        video.muted = true;
+        video.autoplay = true;
         cardContentFilter.addEventListener("mouseover", () => {
-          img.style.opacity = "0";
-          video.style.opacity = "1";
-          video.currentTime = 0;
+          img.style.display = "none";
           extrainfo.style.display = "flex";
           gift.style.display = "flex";
           showOptions.style.display = "flex";
+          videoContainer?.append(video);
+          video.currentTime = 0;
+          video.play();
         });
-        cardContentFilter.addEventListener("mouseout", () => {
-          img.style.opacity = "1";
-          video.style.opacity = "0";
+        cardContentFilter.addEventListener("mouseleave", () => {
+          img.style.display = "flex";
           extrainfo.style.display = "none";
           gift.style.display = "none";
           showOptions.style.display = "none";
+          video.remove();
         });
       }
     });
