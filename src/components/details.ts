@@ -6,14 +6,14 @@ import {
   AchievementsOfGames,
   PostOfGames,
   imgOfEachGame,
-} from "../api/games";
+} from "../utilities/fetchGetGames";
 import {
   getDetailsbyGameSlug,
   getDetailsCreatorsbyGameSlug,
   getFirstAchievementsOfGames,
   getFirstPostOfGames,
   imagesAllGames,
-} from "../api/games";
+} from "../utilities/fetchGetGames";
 
 async function getDetails(): Promise<void> {
   const detailGames = await getDetailsbyGameSlug();
@@ -103,7 +103,7 @@ async function getEachGameDetail(
         getIconAndStoreMap[slug] ?? getIconAndStoreMap.default;
       return `<button class="store__buttons">
       ${name}
-      <img class="store__icon__button" src="${icon}" alt="">
+      <img loading="lazy" class="store__icon__button" src="${icon}" alt="">
       </button>`;
     })
     .join("");
@@ -132,7 +132,7 @@ async function getEachGameDetail(
         "
       >
         <div class="creators__cards__profile">
-          <img
+          <img loading="lazy"
             class="creators__imgProfile"
             src="${image ?? "./public/icon/creators-icon.svg"}"
             alt=""
@@ -167,7 +167,7 @@ async function getEachGameDetail(
             const image = result.image;
             const percent = result.percent;
             return `<div class="achievements__cards">
-          <img
+          <img loading="lazy"
             class="achievements__cards__imgs"
             src="${image}"
             alt=""
@@ -262,17 +262,17 @@ async function getEachGameDetail(
               src="https://media.rawg.io/media/stories/5e4/5e4d63b3fccc2567946ab1228da01ce2.mp4"
             ></video>
             <div class="putVideos__imgs">
-              <img
+              <img loading="lazy"
                 class="putVideos__img"
                 src="${imgGames[0].image}"
                 alt=""
               />
-              <img
+              <img loading="lazy"
                 class="putVideos__img"
                 src="${imgGames[1].image}"
                 alt=""
               />
-              <img
+              <img loading="lazy"
                 class="putVideos__img"
                 src="${imgGames[2].image}"
                 alt=""
@@ -302,7 +302,7 @@ async function getEachGameDetail(
                 >My games
                 <span class="text__opacity btton__textNumber"> 362</span></span
               >
-              <img
+              <img loading="lazy"
                 class="btton__addImg"
                 src="./images/addbutton__img.svg"
                 alt=""
@@ -318,7 +318,7 @@ async function getEachGameDetail(
               >
               <img
                 class="btton__addImg addImg--gift"
-                src="./icon/gift-icon.svg"
+                src="./public/icon/gift-icon.svg"
                 alt=""
               />
             </button>
@@ -327,12 +327,12 @@ async function getEachGameDetail(
                 <span class="text__opacity opacity__save">Save to</span
                 >Collection
               </p>
-              <img src="./icon/collection-icon.svg" alt=""
+              <img loading="lazy" src="./public/icon/collection-icon.svg" alt=""
             /></a>
           </div>
           <div class="btton__editGame1">
             <a class="details__btton__editGame" href="">
-              <img src="./icon/edit-icon.svg" alt="" />
+              <img loading="lazy" src="./public/icon/edit-icon.svg" alt="" />
               Edit the game info
             </a>
             <p class="details__textLastModified">Last Modified: ${newDateEl}</p>
@@ -341,7 +341,7 @@ async function getEachGameDetail(
             <div class="ratingChart__title">
               <div class="rating__img">
                 <h2>Exceptional</h2>
-                <img src="./images/rating-img.png" alt="" />
+                <img loading="lazy" src="./public/icon/rating-img.png" alt="" />
               </div>
               <span
                 role="button"
@@ -375,7 +375,7 @@ async function getEachGameDetail(
         </div>
         <div class="btton__editGame2">
           <a class="details__btton__editGame" href="">
-            <img src="./icon/edit-icon.svg" alt="" />
+            <img loading="lazy" src="./public/icon/edit-icon.svg" alt="" />
             Edit the game info
           </a>
           <p class="details__textLastModified">Last Modified: ${newDateEl}</p>
@@ -540,7 +540,7 @@ async function getEachGameDetail(
               <h3 class="details__secondConatiner__titles">${
                 detailGames.name
               }</br>post</h3>
-              <img src="" alt="" />
+              <img loading="lazy" src="" alt="" />
             </div>
             <span class="second__containers__count">${
               postGames.count

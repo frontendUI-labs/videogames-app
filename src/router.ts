@@ -8,8 +8,7 @@ const Router: Router = {
     document.querySelectorAll("a.navlink").forEach((a) => {
       a.addEventListener("click", (event) => {
         event.preventDefault();
-        const href = (event.target as HTMLElement).getAttribute("href");
-        // @ts-ignore
+        const href: any = (event.target as HTMLElement).getAttribute("href");
         Router.go(href);
       });
     });
@@ -37,20 +36,18 @@ const Router: Router = {
           "block";
         return;
       }
-
-      if (route.includes("/games/")) {
+      if (route.includes(`/games/`)) {
         (
           document.querySelector("section#details") as HTMLElement
         ).style.display = "block";
         return;
       }
-
-      // if (route.includes("/games/")) {
-      //   (
-      //     document.querySelector("section#genres") as HTMLElement
-      //   ).style.display = "block";
-      //   return;
-      // }
+      if (route.includes("/gnres")) {
+        (
+          document.querySelector("section#genres") as HTMLElement
+        ).style.display = "block";
+        return;
+      }
       if (route.includes("/?search")) {
         (
           document.querySelector("section#search") as HTMLElement
@@ -64,6 +61,6 @@ const Router: Router = {
 };
 // @ts-ignore
 
-window.Router = Router; // make it "public"
+window.router = Router; // make it "public"
 
 export default Router;

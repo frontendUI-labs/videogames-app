@@ -4,7 +4,7 @@ import {
   getFiltersDescription,
   ParentPlatforms,
   Game,
-} from "../utilities/Fetch-Get-videoGames/fetchGetGames";
+} from "./utilities/fetchGetGames";
 import { createDOM } from "./utilities/stringToDOM";
 import { format } from "date-fns";
 
