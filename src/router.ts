@@ -27,6 +27,7 @@ const Router: Router = {
     if (addToHistory) {
       history.pushState({ route }, "", route);
     }
+
     // @ts-ignore
 
     document.querySelectorAll("section.page").forEach((s: HTMLElement) => {
@@ -43,12 +44,13 @@ const Router: Router = {
         ).style.display = "block";
         return;
       }
-      if (route.includes("/games/")) {
-        (
-          document.querySelector("section#genres") as HTMLElement
-        ).style.display = "block";
-        return;
-      }
+
+      // if (route.includes("/games/")) {
+      //   (
+      //     document.querySelector("section#genres") as HTMLElement
+      //   ).style.display = "block";
+      //   return;
+      // }
       if (route.includes("/?search")) {
         (
           document.querySelector("section#search") as HTMLElement

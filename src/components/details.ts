@@ -46,20 +46,20 @@ async function getEachGameDetail(
   imagesGames: imgOfEachGame
 ): Promise<void> {
   let platformSlugIconMap: { [key: string]: string } = {
-    linux: "../icon/linux.svg",
-    pc: "../icon/pc-icon.svg",
-    ios: "../icon/ios-icon.svg",
-    mac: "../icon/apple.svg",
-    android: "../icon/android-icon.svg",
-    xbox: "../icon/xbox-icon.svg",
-    playstation: "../icon/ps4-icon.svg",
-    nintendo: "../icon/nintendo-icon.svg",
+    linux: "./public/icon/linux.svg",
+    pc: "./public/icon/pc-icon.svg",
+    ios: "./public/icon/ios-icon.svg",
+    mac: "./public/icon/apple.svg",
+    android: "./public/icon/android-icon.svg",
+    xbox: "./public/icon/xbox-icon.svg",
+    playstation: "./public/icon/ps4-icon.svg",
+    nintendo: "./public/icon/nintendo-icon.svg",
   };
   const getGamesPlatformsIcons = detailGames.parent_platforms
     .map((platforms) => {
       const platformSlug = platforms.platform.slug;
       return `<img src="${
-        platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
+        platformSlugIconMap[platformSlug] ?? "./public/icon/plus-icon.svg"
       }" alt="" />`;
     })
     .join("");
@@ -87,14 +87,14 @@ async function getEachGameDetail(
     .join(", ");
 
   let getIconAndStoreMap: { [key: string]: string[] } = {
-    "playstation-store": ["../icon/ps4-icon.svg", "PlayStation Store"],
-    "epic-games": ["../icon/epicgame-icon.svg", "Epic Games"],
-    steam: ["../icon/steam-icon.svg", "Steam"],
-    xbox360: ["../icon/xbox-icon.svg", "Xbox360 Store"],
-    "xbox-store": ["../icon/xbox-icon.svg", "Xbox Store"],
-    nintendo: ["../icon/nintendo-icon.svg", "Nintendo Store"],
-    default: ["../icon/nintendo-icon.svg", "Nintendo Store"],
-    gog: ["../icon/gogstore-icon.svg", "GOG"],
+    "playstation-store": ["./public/icon/ps4-icon.svg", "PlayStation Store"],
+    "epic-games": ["./public/icon/epicgame-icon.svg", "Epic Games"],
+    steam: ["./public/icon/steam-icon.svg", "Steam"],
+    xbox360: ["./public/icon/xbox-icon.svg", "Xbox360 Store"],
+    "xbox-store": ["./public/icon/xbox-icon.svg", "Xbox Store"],
+    nintendo: ["./public/icon/nintendo-icon.svg", "Nintendo Store"],
+    default: ["./public/icon/nintendo-icon.svg", "Nintendo Store"],
+    gog: ["./public/icon/gogstore-icon.svg", "GOG"],
   };
   const getStoresOfEachGame = detailGames.stores
     .map((store) => {
@@ -134,7 +134,7 @@ async function getEachGameDetail(
         <div class="creators__cards__profile">
           <img
             class="creators__imgProfile"
-            src="${image ?? "../icon/creators-icon.svg"}"
+            src="${image ?? "./public/icon/creators-icon.svg"}"
             alt=""
           />
           <a href="/creators/${slug}">${name}</a>
@@ -225,7 +225,6 @@ async function getEachGameDetail(
   const formatDateGame = format(new Date(detailGames.released), "LLL dd, yyyy");
   const newDateEl = format(new Date(detailGames.updated), "LLL dd, yyyy");
   const imgGames = imagesGames.results;
-
   const allDesciptionOfGames = detailGames.description.split("<br />");
   const firstDescriptionDetails = allDesciptionOfGames.slice(0, 3).join("");
   const restDescriptionDetails = allDesciptionOfGames.slice(3).join("");

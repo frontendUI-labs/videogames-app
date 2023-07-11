@@ -29,19 +29,16 @@
   width: 383px;
   height: 216px;
   object-fit: cover;
-  transition: 1s;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.video {
-  transition: 1s;
+/* .video {
   position: absolute;
   top: 0;
-  transition: 1s;
-  opacity: 0;
+  display: none;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-}
+} */
 .game__image {
   width: 383px;
   background-size: cover;
