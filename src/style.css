@@ -2,6 +2,8 @@
 @import url(./css/home.css);
 @import url(./css/vars.css);
 @import url(./css/sidebar.css);
+@import url(./css/filterGames.css);
+@import url(./css/header.css);
 
 body {
   display: grid;

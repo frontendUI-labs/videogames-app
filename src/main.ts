@@ -1,6 +1,8 @@
 import "./style.css";
 import "../src/home.ts";
+import "../src/filterGames.ts";
 import "../src/components/sidebar.ts";
+import "../src/header.ts";
 import Router from "../src/router";
 
 window.addEventListener("DOMContentLoaded", () => {

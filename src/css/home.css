@@ -2,10 +2,14 @@
   padding-inline: 10px;
   padding-block: 24px;
   block-size: 100%;
-  z-index: 99;
-  max-width: 100%;
+  z-index: 1;
+  width: 100%;
   background: var(--black-800);
-  padding-inline: 130px;
+  margin: auto;
+  /* padding-inline: 30px; */
+}
+.home__wrapper {
+  padding-inline: 1rem;
 }
 
 .homeHeading {
@@ -25,12 +29,21 @@
   width: 383px;
   height: 216px;
   object-fit: cover;
+  transition: 1s;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
-
+.video {
+  transition: 1s;
+  position: absolute;
+  top: 0;
+  transition: 1s;
+  opacity: 0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 .game__image {
-  /* background-image: url("../../imagenes/GTAV.webp"); */
   width: 383px;
-  /* height: 270px; */
   background-size: cover;
   position: relative;
   height: 216px;
@@ -44,8 +57,6 @@
   background: rgba(0, 0, 0, 0.8);
   border-radius: 50%;
   border: none;
-  cursor: pointer;
-  /* color: var(--gray-100); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,17 +86,20 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
+
   /* align-items: center;
   justify-content: center;
   margin: auto; */
 }
 
 .button__filter {
+  min-width: 200px;
   background: var(--black-400);
   border: none;
   color: var(--white);
   font-family: "Roboto", sans-serif;
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   font-size: 14px;
   align-items: center;
@@ -93,18 +107,58 @@
   padding-block: 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  position: relative;
+}
+.display__order {
+  position: absolute;
+  z-index: 1;
 }
 .button__filter:hover {
   color: var(--gray-400);
 }
+
+.display__order {
+  width: 200px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 20px;
+  border-radius: 0.5rem;
+  display: none;
+}
+.is-open {
+  display: flex;
+}
+.categories__games {
+  display: flex;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  gap: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  margin-block: 0.5rem;
+}
+.categories__games:hover {
+  background-color: #e5e5e5;
+  border-radius: 0.2rem;
+}
+
 .categories {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 14px;
 }
+.check-icon {
+  display: none;
+}
+.check-icon.show {
+  display: flex;
+}
 .Discover__options {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 .display__Options {
@@ -119,6 +173,9 @@
   padding: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+.display__icons {
+  height: 1.3rem;
 }
 .layout__grid:hover {
   background: var(--gray-500);
@@ -136,25 +193,37 @@
   margin-top: 20px;
   gap: 1rem;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: auto;
+
+  /* border-bottom-right-radius: 12px; */
+
+  /* grid-auto-flow: row wrap; */
+  /* width: 100%; */
+  /* grid-template-columns: repeat(1, auto); */
+
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
 }
 .card__wrapper {
-  background: var(--black-500);
-  border-radius: 12px;
-  overflow: hidden;
+  /* background: var(--black-500); */
+  /* border-radius: 12px; */
+  /* overflow: hidden; */
   width: 383px;
-  cursor: pointer;
+  /* cursor: pointer; */
+  margin: auto;
 }
 .card__wrapper:hover {
   transform: scale(1.02);
   transition: 0.5s;
 }
+
 .card__content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+
+  background: var(--black-500);
+  position: relative;
 }
 .card__header {
   display: flex;
@@ -163,7 +232,7 @@
 }
 .games_console {
   display: flex;
-  gap: 0.2rem;
+  gap: 0.4rem;
 }
 .game__buy {
   padding: 2px;
@@ -172,8 +241,15 @@
   color: var(--green-300);
   width: 32px;
   height: 32px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+#gift,
+#moreOptions {
+  display: none;
 }
 .card__title {
   display: flex;
@@ -183,6 +259,7 @@
 .game__name {
   font-family: "Roboto", sans-serif;
   color: var(--white);
+  cursor: pointer;
 }
 .game__name:hover {
   color: var(--gray-300);
@@ -220,44 +297,101 @@
   text-decoration: underline;
   text-decoration-color: var(--gray-300);
 }
+
+.title {
+  font-family: "Roboto", sans-serif;
+  color: var(--gray-400);
+  font-weight: 700;
+  font-size: 12px;
+}
+.information__release {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 0.5rem;
+}
+.hr__separation {
+  height: 1px;
+  width: 95%;
+  border: 1px solid rgba(117, 117, 117, 0.1);
+  margin: auto;
+}
+.extra__information__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  display: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  /* position: absolute;
+  z-index: 9;
+  top: 150px; */
+  background: var(--black-500);
+}
+.main__card__content {
+  position: relative;
+}
+
+.links,
+.game__release__date {
+  /* text-decoration: none; */
+  font-family: "Roboto", sans-serif;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.games__related {
+  background: var(--black-400);
+  color: var(--white);
+  border-radius: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  /* font-weight: 700; */
+  font-size: 12px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+.games__related:hover {
+  color: yellow;
+}
+
 @media screen and (min-width: 1140px) {
-  body {
-    background: red;
-  }
   .card__content__wrapper {
     grid-template-columns: repeat(2, auto);
   }
   .card__wrapper {
-    width: 355px;
+    width: 383px;
   }
   .discover__layouts {
     display: flex;
   }
+  .show__more__details__card {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 1600px) {
-  body {
-    background: orange;
-  }
   .card__wrapper {
-    width: 385px;
+    width: 383px;
   }
   .card__content__wrapper {
     grid-template-columns: repeat(3, auto);
   }
 }
 @media screen and (min-width: 1920px) {
-  body {
-    background: purple;
-  }
   .card__content__wrapper {
     grid-template-columns: repeat(4, auto);
-    grid-template-rows: auto;
   }
   .card__wrapper {
-    width: 385px;
+    width: 383px;
   }
   .game__image {
-    width: 385px;
+    width: 383px;
   }
 }
