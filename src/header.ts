@@ -8,14 +8,14 @@ import {
 import Router from "../src/router";
 
 const platformSlugIconMap: { [key: string]: string } = {
-  linux: "./public/icon/linux.svg",
-  pc: "./public/icon/windows.svg",
-  ios: "./public/icon/ios-icon.svg",
-  mac: "./public/icon/apple.svg",
-  android: "./public/icon/android-icon.svg",
-  xbox: "./public/icon/xbox-icon.svg",
-  playstation: "./public/icon/pplaystation-icon.svg",
-  nintendo: "./public/icon/nintendo-icon.svg",
+  linux: "../icon/linux.svg",
+  pc: "../icon/windows.svg",
+  ios: "../icon/ios-icon.svg",
+  mac: "../icon/apple.svg",
+  android: "../icon/android-icon.svg",
+  xbox: "../icon/xbox-icon.svg",
+  playstation: "../icon/pplaystation-icon.svg",
+  nintendo: "../icon/nintendo-icon.svg",
 };
 
 export function renderParentPlaforms(parentPlaforms: ParentPlatforms) {
@@ -23,7 +23,7 @@ export function renderParentPlaforms(parentPlaforms: ParentPlatforms) {
     .map((platforms) => {
       const platformSlug = platforms.platform.slug;
       return `<img loading="lazy" id="ps4-icon" src="${
-        platformSlugIconMap[platformSlug] ?? "./public/icon/plus-icon.svg"
+        platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
       }" alt="" />`;
     })
     .join("");
@@ -46,7 +46,7 @@ export function renderGameCardEl(game: Game) {
           game.background_image ?? "../images/justInCasejpg.jpg"
         }" alt="">
         <button class="play__background" id="iconPlay">
-          <img loading="lazy" class="play-icon" src="../public/icon/play-icon.svg" alt="" />
+          <img loading="lazy" class="play-icon" src="../icon/play-icon.svg" alt="" />
         </button>
       </div>
       <div class="main__card__content">
@@ -65,18 +65,18 @@ export function renderGameCardEl(game: Game) {
             ${game.name}
           </h2>
           </a>
-          <img loading="lazy" src="../public/icon/plus-icon.svg" alt="">
+          <img loading="lazy" src="../icon/plus-icon.svg" alt="">
         </div>
         <div class="more__options__button">
           <button class="card__buttons">
-          <img loading="lazy" class=""plus src="../public/icon/plus-icon.svg" alt="">
+          <img loading="lazy" class=""plus src="../icon/plus-icon.svg" alt="">
             <span class="game_number">${game.added}</span>
           </button>
           <button class="card__buttons" id="gift">
-            <img loading="lazy" src="../public/icon/windows.svg" alt="" />
+            <img loading="lazy" src="../icon/windows.svg" alt="" />
           </button>
           <button class="card__buttons" id="moreOptions">
-            <img loading="lazy" src="../public/icon/windows.svg" alt="" />
+            <img loading="lazy" src="../icon/windows.svg" alt="" />
           </button>
         </div>
         <div class="show__more__details__card">
@@ -104,7 +104,7 @@ export function renderGameCardEl(game: Game) {
                 </div>
                 <button class="games__related">
                   Show more like this
-                  <img loading="lazy" src="../public/icon/icon-arrowRight.svg" alt="" />
+                  <img loading="lazy" src="../icon/icon-arrowRight.svg" alt="" />
                 </button>
                 <button class="games__related" id="hideGame">Hide this game</button>
               </div>
@@ -122,7 +122,7 @@ async function getDataFromSearch(searchValue: string) {
   const numberOfGames = document.querySelector(
     ".games__founded"
   ) as HTMLElement;
-  numberOfGames.textContent = games ? `${games.length} juegos` : "...";
+  numberOfGames.textContent = games ? `${games.length} juegos` : "..";
   renderGames(games, cardsEl);
 }
 

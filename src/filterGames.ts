@@ -15,14 +15,14 @@ type genresType = {
 }[];
 
 let platformSlugIconMap: { [key: string]: string } = {
-  linux: "./public/icon/linux.svg",
-  pc: "./public/icon/windows.svg",
-  ios: "./public/icon/ios-icon.svg",
-  mac: "./public/icon/apple.svg",
-  android: "./public/icon/android-icon.svg",
-  xbox: "./public/icon/xbox-icon.svg",
-  playstation: "./public/icon/pplaystation-icon.svg",
-  nintendo: "./public/icon/nintendo-icon.svg",
+  linux: "../icon/linux.svg",
+  pc: "../icon/windows.svg",
+  ios: "../icon/ios-icon.svg",
+  mac: "../icon/apple.svg",
+  android: "../icon/android-icon.svg",
+  xbox: "../icon/xbox-icon.svg",
+  playstation: "../icon/pplaystation-icon.svg",
+  nintendo: "../icon/nintendo-icon.svg",
 };
 
 async function getGamesData(): Promise<void> {
@@ -46,7 +46,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
       <div class="interaction__butons">
         <button class="button__follow">Follow</button>
         <button class="button__follow icon">
-          <img loading="lazy"  src="./public/icon/share-icon.svg" alt="" />
+          <img loading="lazy"  src="../icon/share-icon.svg" alt="" />
         </button>
       </div>
     </div>
@@ -86,7 +86,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
             <span class="categories" id="action__categories"
               >Popularity</span
             >
-            <img loading="lazy" src="./public/icon/dropDown-icon.svg" alt="" />
+            <img loading="lazy" src="../icon/dropDown-icon.svg" alt="" />
           </button>
           <div
             class="display__action__order"
@@ -100,7 +100,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 Date added
                 <img loading="lazy"
                   class="check-icon"
-                  src="./public/icon/check-icon.svg"
+                  src="../icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -111,7 +111,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 Name
                 <img loading="lazy"
                   class="check-icon"
-                  src="./public/icon/check-icon.svg"
+                  src="../icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -122,7 +122,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 Release date
                 <img loading="lazy"
                   class="check-icon"
-                  src="./public/icon/check-icon.svg"
+                  src="../icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -134,7 +134,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 <img loading="lazy"
                   class="check-icon"
                   id="popularityOption"
-                  src="./public/icon/check-icon.svg"
+                  src="../icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -145,7 +145,7 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
                 Average rating
                 <img loading="lazy"
                   class="check-icon"
-                  src="./public/icon/check-icon.svg"
+                  src="../icon/check-icon.svg"
                   alt=""
                 />
               </li>
@@ -154,11 +154,11 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
         </div>
         <button class="button__filter" id="button__filter">
           Release Date
-          <img loading="lazy" src="./public/icon/dropDown-icon.svg" alt="" />
+          <img loading="lazy" src="../icon/dropDown-icon.svg" alt="" />
         </button>
         <button class="button__filter" id="button__filter">
           Platforms
-          <img loading="lazy" src="./public/icon/dropDown-icon.svg" alt="" />
+          <img loading="lazy" src="../icon/dropDown-icon.svg" alt="" />
         </button>
       </div>
       <div class="discover__layouts">
@@ -166,14 +166,14 @@ function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
         <button class="layout__grid" id="layoutGrid">
           <img loading="lazy"
             class="display__icons"
-            src="./public/icon/grid-icon.svg"
+            src="../icon/grid-icon.svg"
             alt=""
           />
         </button>
         <button class="layout__grid" id="layoutGridList">
           <img loading="lazy"
             class="display__icons"
-            src="./public/icon/list-icon.svg"
+            src="../icon/list-icon.svg"
             alt=""
           />
         </button>
@@ -282,7 +282,7 @@ function getEachGamereder(
       .map((platforms) => {
         const platformSlug = platforms.platform.slug;
         return `<img loading="lazy" id="ps4-icon" src="${
-          platformSlugIconMap[platformSlug] ?? "./public/icon/plus-icon.svg"
+          platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
         }" alt="" />`;
       })
       .join("");
@@ -308,7 +308,7 @@ function getEachGamereder(
       <div class="game__image">
         <img loading="lazy" class="videoGamePicture" id="videoGamePicture" src="${game.background_image}" alt="">
         <button class="play__background" id="iconPlay">
-          <img loading="lazy" class="play-icon" src="./public/icon/play-icon.svg" alt="" />
+          <img loading="lazy" class="play-icon" src="../icon/play-icon.svg" alt="" />
         </button>
       </div>
       <div class="main__card__content">
@@ -325,18 +325,18 @@ function getEachGamereder(
           ${game.name}
         </h2>
         </a>
-          <img loading="lazy" src="./public/icon/plus-icon.svg" alt="">
+          <img loading="lazy" src="../icon/plus-icon.svg" alt="">
         </div>
         <div class="more__options__button">
           <button class="card__buttons">
-          <img loading="lazy" class=""plus src="./public/icon/plus-icon.svg" alt="">
+          <img loading="lazy" class=""plus src="../icon/plus-icon.svg" alt="">
             <span class="game_number">${game.ratings_count}</span>
           </button>
           <button class="card__buttons" id="gift">
-            <img loading="lazy" src="./public/icon/windows.svg" alt="" />
+            <img loading="lazy" src="../icon/windows.svg" alt="" />
           </button>
           <button class="card__buttons" id="moreOptions">
-            <img loading="lazy" src="./public/icon/windows.svg" alt="" />
+            <img loading="lazy" src="../icon/windows.svg" alt="" />
           </button>
         </div>
         <div class="show__more__details__card">
@@ -364,7 +364,7 @@ function getEachGamereder(
                 </div>
                 <button class="games__related">
                   Show more like this
-                  <img loading="lazy" src="./public/icon/icon-arrowRight.svg" alt="" />
+                  <img loading="lazy" src="../icon/icon-arrowRight.svg" alt="" />
                 </button>
                 <button class="games__related" id="hideGame">Hide this game</button>
               </div>

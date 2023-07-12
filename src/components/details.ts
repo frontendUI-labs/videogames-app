@@ -46,20 +46,20 @@ async function getEachGameDetail(
   imagesGames: imgOfEachGame
 ): Promise<void> {
   let platformSlugIconMap: { [key: string]: string } = {
-    linux: "./public/icon/linux.svg",
-    pc: "./public/icon/pc-icon.svg",
-    ios: "./public/icon/ios-icon.svg",
-    mac: "./public/icon/apple.svg",
-    android: "./public/icon/android-icon.svg",
-    xbox: "./public/icon/xbox-icon.svg",
-    playstation: "./public/icon/ps4-icon.svg",
-    nintendo: "./public/icon/nintendo-icon.svg",
+    linux: "../icon/linux.svg",
+    pc: "../icon/pc-icon.svg",
+    ios: "../icon/ios-icon.svg",
+    mac: "../icon/apple.svg",
+    android: "../icon/android-icon.svg",
+    xbox: "../icon/xbox-icon.svg",
+    playstation: "../icon/ps4-icon.svg",
+    nintendo: "../icon/nintendo-icon.svg",
   };
   const getGamesPlatformsIcons = detailGames.parent_platforms
     .map((platforms) => {
       const platformSlug = platforms.platform.slug;
-      return `<img src="${
-        platformSlugIconMap[platformSlug] ?? "./public/icon/plus-icon.svg"
+      return `<img loading="lazy" src="${
+        platformSlugIconMap[platformSlug] ?? "../icon/plus-icon.svg"
       }" alt="" />`;
     })
     .join("");
@@ -87,14 +87,14 @@ async function getEachGameDetail(
     .join(", ");
 
   let getIconAndStoreMap: { [key: string]: string[] } = {
-    "playstation-store": ["./public/icon/ps4-icon.svg", "PlayStation Store"],
-    "epic-games": ["./public/icon/epicgame-icon.svg", "Epic Games"],
-    steam: ["./public/icon/steam-icon.svg", "Steam"],
-    xbox360: ["./public/icon/xbox-icon.svg", "Xbox360 Store"],
-    "xbox-store": ["./public/icon/xbox-icon.svg", "Xbox Store"],
-    nintendo: ["./public/icon/nintendo-icon.svg", "Nintendo Store"],
-    default: ["./public/icon/nintendo-icon.svg", "Nintendo Store"],
-    gog: ["./public/icon/gogstore-icon.svg", "GOG"],
+    "playstation-store": ["../icon/ps4-icon.svg", "PlayStation Store"],
+    "epic-games": ["../icon/epicgame-icon.svg", "Epic Games"],
+    steam: ["../icon/steam-icon.svg", "Steam"],
+    xbox360: ["../icon/xbox-icon.svg", "Xbox360 Store"],
+    "xbox-store": ["../icon/xbox-icon.svg", "Xbox Store"],
+    nintendo: ["../icon/nintendo-icon.svg", "Nintendo Store"],
+    default: ["../icon/nintendo-icon.svg", "Nintendo Store"],
+    gog: ["../icon/gogstore-icon.svg", "GOG"],
   };
   const getStoresOfEachGame = detailGames.stores
     .map((store) => {
@@ -134,7 +134,7 @@ async function getEachGameDetail(
         <div class="creators__cards__profile">
           <img loading="lazy"
             class="creators__imgProfile"
-            src="${image ?? "./public/icon/creators-icon.svg"}"
+            src="${image ?? "../icon/creators-icon.svg"}"
             alt=""
           />
           <a href="/creators/${slug}">${name}</a>
@@ -327,12 +327,12 @@ async function getEachGameDetail(
                 <span class="text__opacity opacity__save">Save to</span
                 >Collection
               </p>
-              <img loading="lazy" src="./public/icon/collection-icon.svg" alt=""
+              <img loading="lazy" src="../icon/collection-icon.svg" alt=""
             /></a>
           </div>
           <div class="btton__editGame1">
             <a class="details__btton__editGame" href="">
-              <img loading="lazy" src="./public/icon/edit-icon.svg" alt="" />
+              <img loading="lazy" src="../icon/edit-icon.svg" alt="" />
               Edit the game info
             </a>
             <p class="details__textLastModified">Last Modified: ${newDateEl}</p>
@@ -341,7 +341,7 @@ async function getEachGameDetail(
             <div class="ratingChart__title">
               <div class="rating__img">
                 <h2>Exceptional</h2>
-                <img loading="lazy" src="./public/icon/rating-img.png" alt="" />
+                <img loading="lazy" src="../icon/rating-img.png" alt="" />
               </div>
               <span
                 role="button"
@@ -375,7 +375,7 @@ async function getEachGameDetail(
         </div>
         <div class="btton__editGame2">
           <a class="details__btton__editGame" href="">
-            <img loading="lazy" src="./public/icon/edit-icon.svg" alt="" />
+            <img loading="lazy" src="../icon/edit-icon.svg" alt="" />
             Edit the game info
           </a>
           <p class="details__textLastModified">Last Modified: ${newDateEl}</p>
