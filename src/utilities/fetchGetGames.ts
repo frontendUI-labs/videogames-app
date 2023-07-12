@@ -413,7 +413,7 @@ export async function getFirstAchievementsOfGames(): Promise<
   AchievementsOfGames | undefined
 > {
   const { pathname } = window.location;
-  if (pathname.includes("/games")) return;
+  if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
   const gameSlug = path[2];
   if (!gameSlug) return;

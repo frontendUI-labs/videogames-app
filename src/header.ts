@@ -46,7 +46,7 @@ export function renderGameCardEl(game: Game) {
           game.background_image ?? "../images/justInCasejpg.jpg"
         }" alt="">
         <button class="play__background" id="iconPlay">
-          <img loading="lazy" class="play-icon" src="./public/icon/play-icon.svg" alt="" />
+          <img loading="lazy" class="play-icon" src="../public/icon/play-icon.svg" alt="" />
         </button>
       </div>
       <div class="main__card__content">
@@ -65,18 +65,18 @@ export function renderGameCardEl(game: Game) {
             ${game.name}
           </h2>
           </a>
-          <img loading="lazy" src="./public/icon/plus-icon.svg" alt="">
+          <img loading="lazy" src="../public/icon/plus-icon.svg" alt="">
         </div>
         <div class="more__options__button">
           <button class="card__buttons">
-          <img loading="lazy" class=""plus src="./public/icon/plus-icon.svg" alt="">
+          <img loading="lazy" class=""plus src="../public/icon/plus-icon.svg" alt="">
             <span class="game_number">${game.added}</span>
           </button>
           <button class="card__buttons" id="gift">
-            <img loading="lazy" src="./public/icon/windows.svg" alt="" />
+            <img loading="lazy" src="../public/icon/windows.svg" alt="" />
           </button>
           <button class="card__buttons" id="moreOptions">
-            <img loading="lazy" src="./public/icon/windows.svg" alt="" />
+            <img loading="lazy" src="../public/icon/windows.svg" alt="" />
           </button>
         </div>
         <div class="show__more__details__card">
@@ -104,7 +104,7 @@ export function renderGameCardEl(game: Game) {
                 </div>
                 <button class="games__related">
                   Show more like this
-                  <img loading="lazy" src="./public/icon/icon-arrowRight.svg" alt="" />
+                  <img loading="lazy" src="../public/icon/icon-arrowRight.svg" alt="" />
                 </button>
                 <button class="games__related" id="hideGame">Hide this game</button>
               </div>
