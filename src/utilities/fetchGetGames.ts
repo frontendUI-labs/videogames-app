@@ -348,9 +348,9 @@ export type GameDetails = {
 
 export async function getDetailsbyGameSlug(): Promise<GameDetails | undefined> {
   const { pathname } = window.location;
-  if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
   const gameSlug = path[2];
+  if (!pathname.includes(`/games/${gameSlug}`)) return;
   if (!gameSlug) return;
 
   try {
@@ -384,9 +384,9 @@ export async function getDetailsCreatorsbyGameSlug(): Promise<
   DetailsOfCreators | undefined
 > {
   const { pathname } = window.location;
-  if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
   const gameSlug = path[2];
+  if (!pathname.includes(`/games/${gameSlug}`)) return;
   if (!gameSlug) return;
   try {
     const response = await fetch(
@@ -413,9 +413,9 @@ export async function getFirstAchievementsOfGames(): Promise<
   AchievementsOfGames | undefined
 > {
   const { pathname } = window.location;
-  if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
   const gameSlug = path[2];
+  if (!pathname.includes(`/games/${gameSlug}`)) return;
   if (!gameSlug) return;
   try {
     const response = await fetch(
@@ -445,9 +445,9 @@ export type PostOfGames = {
 };
 export async function getFirstPostOfGames(): Promise<PostOfGames | undefined> {
   const { pathname } = window.location;
-  if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
   const gameSlug = path[2];
+  if (!pathname.includes(`/games/${gameSlug}`)) return;
   if (!gameSlug) return;
   try {
     const response = await fetch(
@@ -469,9 +469,9 @@ export type imgOfEachGame = {
 
 export async function imagesAllGames(): Promise<imgOfEachGame | undefined> {
   const { pathname } = window.location;
-  if (!pathname.includes("/games")) return;
   const path = pathname.split("/");
   const gameSlug = path[2];
+  if (!pathname.includes(`/games/${gameSlug}`)) return;
   if (!gameSlug) return;
   try {
     const response = await fetch(
