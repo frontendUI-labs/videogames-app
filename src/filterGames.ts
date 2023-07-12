@@ -376,7 +376,7 @@ function getEachGamereder(
     game.genres.map((gender) => {
       const actionGenre = gender.slug;
 
-      if (window.location.pathname.includes(`/games/${actionGenre}`)) {
+      if (window.location.pathname.includes(`/gnres/${actionGenre}`)) {
         const cardContentFilter = createCard(game);
         filterCards.append(cardContentFilter);
 

@@ -43,7 +43,7 @@ export function renderGameCardEl(game: Game) {
   return createDOM(`<div class="card__wrapper"  id="gameCard">
       <div class="game__image">
         <img loading="lazy" class="videoGamePicture" id="videoGamePicture" src="${
-          game.background_image ?? "../images/justInCasejpg.jpg"
+          game.background_image ?? "./images/justInCasejpg.jpg"
         }" alt="">
         <button class="play__background" id="iconPlay">
           <img loading="lazy" class="play-icon" src="../icon/play-icon.svg" alt="" />
@@ -112,7 +112,6 @@ export function renderGameCardEl(game: Game) {
     </div>
     `);
 }
-
 async function getDataFromSearch(searchValue: string) {
   const allGamesSearched = await getGamesDataBySearch(searchValue);
   if (!allGamesSearched) return;
