@@ -588,6 +588,9 @@
   color: var(--black);
   background-color: var(--white);
 }
+#loaderDetails {
+  margin-block-start: 100px;
+}
 .block {
   display: block;
 }
