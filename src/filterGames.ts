@@ -297,7 +297,7 @@ function getEachGamereder(
 
     function renderGenres(genres: genresType) {
       return genres.map((generos) => {
-        return ` <a class="links" href="">${generos.name} </a>`;
+        return ` <a class="links" href=${generos.slug}>${generos.name} </a>`;
       });
     }
 

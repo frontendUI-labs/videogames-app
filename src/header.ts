@@ -31,7 +31,7 @@ export function renderParentPlaforms(parentPlaforms: ParentPlatforms) {
 
 export function renderGenres(genres: Game["genres"]) {
   return genres.map((genre) => {
-    return ` <a class="links" href="/games/${genre.slug}">${genre.name} </a>`;
+    return ` <a class="links" href="/gnres/${genre.slug}">${genre.name} </a>`;
   });
 }
 
