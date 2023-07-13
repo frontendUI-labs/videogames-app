@@ -378,7 +378,7 @@ async function getEachGameDetail(
               >
               <img 
                 class="btton__addImg"
-                src="../images/addbutton__img.svg"
+                src="./images/addbutton__img.svg"
                 alt=""
               />
             </button>
@@ -647,10 +647,10 @@ async function getEachGameDetail(
 
   function renderImgRating(): HTMLImageElement | undefined {
     const imgRatings: Record<string, string> = {
-      exceptional: "../images/exceptional-img.png",
-      recommended: "../images/recommended-img.png",
-      skip: "../images/skip-img.png",
-      meh: "../images/meh-img.png",
+      exceptional: "./images/exceptional-img.png",
+      recommended: "./images/recommended-img.png",
+      skip: "./images/skip-img.png",
+      meh: "./images/meh-img.png",
     };
 
     if (titleMaxCount in imgRatings) {
