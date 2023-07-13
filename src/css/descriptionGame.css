@@ -195,6 +195,10 @@
 .rating__img {
   display: flex;
   justify-content: center;
+  gap: 10px;
+}
+.imgRatingResult {
+  margin-block: auto;
 }
 .ratingChart__title img {
   inline-size: 26px;
@@ -590,6 +594,12 @@
 }
 #loaderDetails {
   margin-block-start: 100px;
+}
+.rating__text {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  letter-spacing: 1.2px;
 }
 .block {
   display: block;
