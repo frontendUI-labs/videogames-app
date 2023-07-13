@@ -182,24 +182,27 @@ async function getEachGameDetail(
         </div>`;
           })
           .join("")
-      : "";
+      : " ";
 
-  const getPostOfEachGame = postGames.results
-    .slice(0, 6)
-    .map((result) => {
-      const image = result.image;
-      const name = result.name;
-      const created = format(new Date(result.created), "LLL dd, yyyy");
-      const username = result.username.substring(3);
-      return ` <div class="details__posts__cards" role="button">
+  const getPostOfEachGame =
+    postGames.results.length > 0
+      ? postGames.results
+          .slice(0, 6)
+          .map((result) => {
+            const image = result.image;
+            const name = result.name;
+            const created = format(new Date(result.created), "LLL dd, yyyy");
+            const username = result.username.substring(3);
+            return ` <div class="details__posts__cards" role="button">
                 <div class="posts__cards__decription">
                   <p class="posts__cards__title">${name}</p>
                   <p class="post__cards__author"><span> ${created}</span> • <span>${username}</span></p>
                 </div>
                 <div class="post__cards__img"><img src="${image}" alt=""></div>
             </div>`;
-    })
-    .join("");
+          })
+          .join("")
+      : "";
 
   const ratingPercentGames = detailGames.ratings
     .map((rating) => {
@@ -228,6 +231,15 @@ async function getEachGameDetail(
   const allDesciptionOfGames = detailGames.description.split("<br />");
   const firstDescriptionDetails = allDesciptionOfGames.slice(0, 3).join("");
   const restDescriptionDetails = allDesciptionOfGames.slice(3).join("");
+  const gameMeta = detailGames.metacritic ?? detailGames.playtime;
+  // const test = detailGames.ratings[1];
+  // console.log(test, "sds");
+
+  // .map((rate) => {
+  //   return rate.count;
+  // });
+  // const prueba = test.sort((a, b) => b - a);
+  // console.log(prueba);
 
   const detailsContent = createDOM(
     `<div class="detailsGame__wraper" id="detailsGame__wraper" style="
@@ -341,7 +353,7 @@ async function getEachGameDetail(
             <div class="ratingChart__title">
               <div class="rating__img">
                 <h2>Exceptional</h2>
-                <img loading="lazy" src="../icon/rating-img.png" alt="" />
+                <img loading="lazy" src="../images/rating-img.png" alt="" />
               </div>
               <span
                 role="button"
@@ -403,7 +415,7 @@ async function getEachGameDetail(
             </div>
             <div class="description__rest__cards">
               Metascore
-              <p>92</p>
+              <span class="game__buy">${gameMeta}</span>
             </div>
             <div class="description__rest__cards">
               Genre
@@ -492,67 +504,68 @@ async function getEachGameDetail(
           </div>
         </div>
         <div class="details__achievements">
-            <div class="creators__cards__title">
-              <h3 class="details__secondConatiner__titles">${
-                detailGames.name
-              } </br>achievements</h3>
-              <span class="second__containers__count">${
-                achievementsGames.count
-              } achievements</span>
+          ${
+            achievementsGames.results.length > 0
+              ? `<div class="creators__cards__title">
+              <h3 class="details__secondConatiner__titles">${detailGames.name} </br>achievements</h3>
+              <span class="second__containers__count">${achievementsGames.count} achievements</span>
             </div>
             <div class="achievements__container">
-              ${getAchievementsOfEachGame}
+            ${getAchievementsOfEachGame}
               <div class="achievements__cards cards_moreAchiev">
                 <div class="achievements__cards_more"><svg
-        class="threepoints"
-                width="20"
-        height="4"
-        viewBox="0 0 20 4"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M17.3601 4C18.4647 4 19.3601 3.10457 19.3601 2C19.3601 0.89543 18.4647 0 17.3601 0C16.2555 0 15.3601 0.89543 15.3601 2C15.3601 3.10457 16.2555 4 17.3601 4Z"
-          fill="gray"
-        />
-        <path
-          d="M9.67993 4C10.7845 4 11.6799 3.10457 11.6799 2C11.6799 0.89543 10.7845 0 9.67993 0C8.57536 0 7.67993 0.89543 7.67993 2C7.67993 3.10457 8.57536 4 9.67993 4Z"
-          fill="gray"
-        />
-        <path
-          d="M2 4C3.10457 4 4 3.10457 4 2C4 0.89543 3.10457 0 2 0C0.89543 0 0 0.89543 0 2C0 3.10457 0.89543 4 2 4Z"
-          fill="gray"
-        />
-      </svg></div>
+                    class="threepoints"
+                            width="20"
+                    height="4"
+                    viewBox="0 0 20 4"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.3601 4C18.4647 4 19.3601 3.10457 19.3601 2C19.3601 0.89543 18.4647 0 17.3601 0C16.2555 0 15.3601 0.89543 15.3601 2C15.3601 3.10457 16.2555 4 17.3601 4Z"
+                      fill="gray"
+                    />
+                    <path
+                      d="M9.67993 4C10.7845 4 11.6799 3.10457 11.6799 2C11.6799 0.89543 10.7845 0 9.67993 0C8.57536 0 7.67993 0.89543 7.67993 2C7.67993 3.10457 8.57536 4 9.67993 4Z"
+                      fill="gray"
+                    />
+                    <path
+                      d="M2 4C3.10457 4 4 3.10457 4 2C4 0.89543 3.10457 0 2 0C0.89543 0 0 0.89543 0 2C0 3.10457 0.89543 4 2 4Z"
+                      fill="gray"
+                    />
+                  </svg></div>
                 <div class="achievements__cards__details">
                   <p class="achievements__cards__title">view all achievements</p>
-                  <p class="achievements__cards__description">${
-                    achievementsGames.count
-                  } items</p>
+                  <p class="achievements__cards__description">${achievementsGames.count} items</p>
                 </div>
               </div>
-            </div>
+              
+            </div>`
+              : " "
+          }
           </div>
         </div>
         <div class="details__posts">
-          <div class="creators__cards__title">
+        ${
+          postGames.results.length > 0
+            ? `<div class="creators__cards__title">
             <div>
-              <h3 class="details__secondConatiner__titles">${
-                detailGames.name
-              }</br>post</h3>
+              <h3 class="details__secondConatiner__titles">${detailGames.name}</br>post</h3>
               <img loading="lazy" src="" alt="" />
             </div>
-            <span class="second__containers__count">${
-              postGames.count
-            } postss</span>
+            <span class="second__containers__count">${postGames.count} postss</span>
           </div>
           <div class="details__posts__container">
-            ${getPostOfEachGame}
+          ${getPostOfEachGame}
             <button class="details__posts__button__more">
               View All
             </button>
+              : " "
+          }
           </div>
-        </div>
+        </div>`
+            : " "
+        }
       </div>
     </div>`
   );
