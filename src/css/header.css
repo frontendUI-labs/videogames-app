@@ -62,7 +62,9 @@
   color: var(--black-800);
   transition: 0.4s;
 }
-
+.card__wrapper {
+  width: 100%;
+}
 .profile__info {
   display: flex;
   align-items: center;
@@ -236,19 +238,19 @@
   gap: 1rem;
 }
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 768px) {
   .cards {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1280px) {
   .cards {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1440px) {
   .cards {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
