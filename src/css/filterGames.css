@@ -45,6 +45,7 @@
   padding-block: 10px;
   border-radius: 0.2rem;
   padding-inline: 35px;
+  cursor: pointer;
 }
 .genred__description {
   color: var(--white);
@@ -206,12 +207,12 @@
   grid-template-columns: auto;
 }
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 768px) {
   .gamefilterCards {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
   .card__wrapper {
-    width: 383px;
+    width: 100%;
   }
   .discover__layouts {
     display: flex;
@@ -221,23 +222,22 @@
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1280px) {
   .card__wrapper {
-    width: 383px;
+    width: 100%;
   }
   .gamefilterCards {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1440px) {
   .gamefilterCards {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
   }
   .card__wrapper {
-    width: 383px;
+    width: 100%;
   }
-  .game__image {
+  /* .game__image {
     width: 383px;
-  }
+  } */
 }

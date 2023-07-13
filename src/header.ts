@@ -60,7 +60,7 @@ export function renderGameCardEl(game: Game) {
           )}</span>
         </div>
         <div class="card__title">
-        <a href="/games/${game.slug}">
+        <a style="text-decoration:none" href="/games/${game.slug}">
           <h2 class="game__name">
             ${game.name}
           </h2>
@@ -155,6 +155,9 @@ function generateVideoHover(gameCardEl: HTMLElement) {
   video.loop = true;
   video.muted = true;
   video.autoplay = true;
+  video.style.width = "100%";
+  video.classList.add('video')
+
   gameCardEl.addEventListener("mouseover", () => {
     img.style.display = "none";
     extrainfo.style.display = "flex";

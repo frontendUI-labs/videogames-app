@@ -26,21 +26,19 @@
   margin-bottom: 1rem;
 }
 .videoGamePicture {
-  width: 383px;
+  width: 100%;
   height: 216px;
   object-fit: cover;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-/* .video {
-  position: absolute;
-  top: 0;
-  display: none;
+.video {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-} */
+}
 .game__image {
-  width: 383px;
+  width: 100%;
+
   background-size: cover;
   position: relative;
   height: 216px;
@@ -201,17 +199,18 @@
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
 }
 .card__wrapper {
+  position: relative;
   /* background: var(--black-500); */
   /* border-radius: 12px; */
   /* overflow: hidden; */
-  width: 383px;
+  width: 100%;
   /* cursor: pointer; */
   margin: auto;
 }
-.card__wrapper:hover {
+/* .card__wrapper:hover {
   transform: scale(1.02);
   transition: 0.5s;
-}
+} */
 
 .card__content {
   display: flex;
@@ -319,13 +318,15 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  display: none;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  /* position: absolute;
+  position: absolute;
   z-index: 9;
-  top: 150px; */
+  top: 150px;
   background: var(--black-500);
+  display: none;
+  /* display: none; */
+  /* z-index: 9999; */
 }
 .main__card__content {
   position: relative;
@@ -358,12 +359,12 @@
   color: yellow;
 }
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 768px) {
   .card__content__wrapper {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
   .card__wrapper {
-    width: 383px;
+    width: 100%;
   }
   .discover__layouts {
     display: flex;
@@ -373,22 +374,22 @@
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1280px) {
   .card__wrapper {
-    width: 383px;
+    width: 100%;
   }
   .card__content__wrapper {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1440px) {
   .card__content__wrapper {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
   }
   .card__wrapper {
-    width: 383px;
+    width: 100%;
   }
-  .game__image {
+  /* .game__image {
     width: 383px;
-  }
+  } */
 }

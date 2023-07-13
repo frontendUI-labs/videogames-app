@@ -26,12 +26,17 @@ let platformSlugIconMap: { [key: string]: string } = {
 };
 
 async function getGamesData(): Promise<void> {
-  const allGamesResponse = await getAllGamesGenres();
-  const allfilterDescription = await getFiltersDescription();
-  if (!allGamesResponse) return;
-  if (!allfilterDescription) return;
-  const dataGamesbyGenre = allGamesResponse.results;
-  getEachGamereder(dataGamesbyGenre, allfilterDescription);
+  try {
+    const [dataGamesbyGenre, allfilterDescription] = await Promise.all([
+      getAllGamesGenres(),
+      getFiltersDescription(),
+    ]);
+
+    if (!dataGamesbyGenre) return;
+    if (!allfilterDescription) return;
+    // const data = allGamesResponse.results;
+    getEachGamereder(dataGamesbyGenre?.results, allfilterDescription);
+  } catch {}
 }
 
 function getDescriptcionOfGenre(genreDescription: descriptionGameGenreType) {
@@ -320,7 +325,7 @@ function getEachGamereder(
           <span class="game__buy">${game.metacritic}</span>
         </div>
         <div class="card__title">
-        <a href="/games/${game.slug}">
+        <a style="text-decoration:none" href="/games/${game.slug}">
         <h2 class="game__name">
           ${game.name}
         </h2>
@@ -376,7 +381,7 @@ function getEachGamereder(
     game.genres.map((gender) => {
       const actionGenre = gender.slug;
 
-      if (window.location.pathname.includes(`/gnres/${actionGenre}`)) {
+      if (window.location.pathname.includes(`/genres/${actionGenre}`)) {
         const cardContentFilter = createCard(game);
         filterCards.append(cardContentFilter);
 
@@ -406,6 +411,9 @@ function getEachGamereder(
         video.loop = true;
         video.muted = true;
         video.autoplay = true;
+        video.style.width = "100%";
+        video.classList.add("video");
+
         cardContentFilter.addEventListener("mouseover", () => {
           img.style.display = "none";
           extrainfo.style.display = "flex";

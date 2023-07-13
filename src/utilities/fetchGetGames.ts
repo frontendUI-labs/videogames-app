@@ -253,7 +253,7 @@ export async function getAllGamesGenres(): Promise<
   GetAllGamesResponse | undefined
 > {
   const { pathname } = window.location;
-  if (!pathname.includes("/gnres")) return;
+  if (!pathname.includes("/genres")) return;
   const path = pathname.split("/");
   const gameGenre = path[2];
   if (!gameGenre) return;
@@ -288,7 +288,7 @@ export async function getFiltersDescription(): Promise<
   descriptionGameGenreType | undefined
 > {
   const { pathname } = window.location;
-  if (!pathname.includes("/gnres")) return;
+  if (!pathname.includes("/genres")) return;
   const path = pathname.split("/");
   const [_, __, gameDescriptionGenre] = path;
   if (!gameDescriptionGenre) return;

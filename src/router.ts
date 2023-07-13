@@ -42,7 +42,7 @@ const Router: Router = {
         ).style.display = "block";
         return;
       }
-      if (route.includes("/gnres")) {
+      if (route.includes("/genres")) {
         (
           document.querySelector("section#genres") as HTMLElement
         ).style.display = "block";
