@@ -378,7 +378,7 @@ async function getEachGameDetail(
               >
               <img 
                 class="btton__addImg"
-                src="./images/addbutton__img.svg"
+                src="../icon/addbutton_icon.svg"
                 alt=""
               />
             </button>
@@ -647,10 +647,10 @@ async function getEachGameDetail(
 
   function renderImgRating(): HTMLImageElement | undefined {
     const imgRatings: Record<string, string> = {
-      exceptional: "./images/exceptional-img.png",
-      recommended: "./images/recommended-img.png",
-      skip: "./images/skip-img.png",
-      meh: "./images/meh-img.png",
+      exceptional: "/images/exceptional-img.png",
+      recommended: "/images/recommended-img.png",
+      skip: "/images/skip-img.png",
+      meh: "/images/meh-img.png",
     };
 
     if (titleMaxCount in imgRatings) {
@@ -661,7 +661,7 @@ async function getEachGameDetail(
       return showImg;
     }
 
-    // return undefined;
+    return undefined;
   }
   // @ts-ignore
   imgRatingResultEl.append(renderImgRating());
