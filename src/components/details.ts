@@ -279,17 +279,29 @@ async function getEachGameDetail(
   const newDateEl = format(new Date(detailGames.updated), "LLL dd, yyyy");
   const imgGames = imagesGames.results;
   const allDesciptionOfGames = detailGames.description.split("<br />");
-  const firstDescriptionDetails = allDesciptionOfGames.slice(0, 3).join("");
-  const restDescriptionDetails = allDesciptionOfGames.slice(3).join("");
+  const descriptionWhitN = detailGames.description.split("</p>");
+  const firstDescriptionDetails = allDesciptionOfGames.slice(0, 2).join("");
+  const firstDescriptionwithN = descriptionWhitN.slice(0, 2).join("");
+  const restDescriptionDetails = allDesciptionOfGames.slice(2).join("");
+  const restDescriptionWithN = descriptionWhitN.slice(2).join("");
   const gameMeta = detailGames.metacritic ?? detailGames.playtime;
-  // const test = detailGames.ratings[1];
-  // console.log(test, "sds");
 
-  // .map((rate) => {
-  //   return rate.count;
-  // });
-  // const prueba = test.sort((a, b) => b - a);
-  // console.log(prueba);
+  function capitalFirstLetter(word: any) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  const ratingsArray = detailGames.ratings;
+  let maxCount = ratingsArray[0].count;
+  let titleMaxCount = ratingsArray[0].title;
+
+  for (let i = 1; i < ratingsArray.length; i++) {
+    if (ratingsArray[i].count > maxCount) {
+      maxCount = ratingsArray[i].count;
+      titleMaxCount = ratingsArray[i].title;
+    }
+  }
+
+  const titleCapital = capitalFirstLetter(titleMaxCount);
 
   const detailsContent = createDOM(
     `<div class="detailsGame__wraper" id="detailsGame__wraper" style="
@@ -364,9 +376,9 @@ async function getEachGameDetail(
                 >My games
                 <span class="text__opacity btton__textNumber"> 362</span></span
               >
-              <img loading="lazy"
+              <img 
                 class="btton__addImg"
-                src="./images/addbutton__img.svg"
+                src="../icon/addbutton_icon.svg"
                 alt=""
               />
             </button>
@@ -380,7 +392,7 @@ async function getEachGameDetail(
               >
               <img
                 class="btton__addImg addImg--gift"
-                src="./public/icon/gift-icon.svg"
+                src="../icon/gift-icon.svg"
                 alt=""
               />
             </button>
@@ -389,7 +401,7 @@ async function getEachGameDetail(
                 <span class="text__opacity opacity__save">Save to</span
                 >Collection
               </p>
-              <img loading="lazy" src="../icon/collection-icon.svg" alt=""
+              <img src="../icon/collection-icon.svg" alt=""
             /></a>
           </div>
           <div class="btton__editGame1">
@@ -402,8 +414,8 @@ async function getEachGameDetail(
           <div class="details_ratingChart">
             <div class="ratingChart__title">
               <div class="rating__img">
-                <h2>Exceptional</h2>
-                <img loading="lazy" src="../images/rating-img.png" alt="" />
+                <h2 class= "rating__text">${titleCapital}</h2>
+                <div class = "imgRatingResult"></div>
               </div>
               <span
                 role="button"
@@ -452,8 +464,12 @@ async function getEachGameDetail(
         <div class="details__description">
           <div class="details__description__container">
            <h3>About</h3>
-           <div class="description__paragraf">${firstDescriptionDetails}<span class="description__pointsSus">...</span></div>
-           <div class="description__paragraf__second">${restDescriptionDetails}</div>
+           <div class="description__paragraf">${
+             firstDescriptionDetails || firstDescriptionwithN
+           }<span class="description__pointsSus">...</span></div>
+           <div class="description__paragraf__second">${
+             restDescriptionDetails || restDescriptionWithN
+           }</div>
            <button class="readMore-btn">Read More</button>
           </div>
           <div class="details__description__rest">
@@ -624,6 +640,31 @@ async function getEachGameDetail(
   // }
 
   container.append(detailsContent);
+
+  const imgRatingResultEl = document.querySelector(
+    ".imgRatingResult"
+  ) as HTMLElement;
+
+  function renderImgRating(): HTMLImageElement | undefined {
+    const imgRatings: Record<string, string> = {
+      exceptional: "/images/exceptional-img.png",
+      recommended: "/images/recommended-img.png",
+      skip: "/images/skip-img.png",
+      meh: "/images/meh-img.png",
+    };
+
+    if (titleMaxCount in imgRatings) {
+      const imgContent: string = imgRatings[titleMaxCount];
+      const showImg: HTMLImageElement = document.createElement("img");
+      showImg.src = imgContent;
+      showImg.alt = "";
+      return showImg;
+    }
+
+    return undefined;
+  }
+  // @ts-ignore
+  imgRatingResultEl.append(renderImgRating());
 
   const textHidden = document.querySelector(
     ".description__paragraf__second"
